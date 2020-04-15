@@ -1,0 +1,20 @@
+﻿<Window x:Name="EKG_program" x:Class="Projektet_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projektet_GUI"
+        mc:Ignorable="d"
+        Title="EKG program" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Menu HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="33" Margin="0,0,-139,0" Width="328">
+            <MenuItem x:Name="Menu" Header="Menu" Background="#FF5F9FCB" Foreground="White">
+                <MenuItem x:Name="Udlån_EKG" Header="Udlån af EKG"  Background="#FF5F9FCB" Click="Udlån_EKG_Click" />
+                <MenuItem x:Name="Indlevering_af_EKG" Header="Indlevering af EKG"  Background="#FF5F9FCB" Click="Indlevering_af_EKG_Click"  />
+                <MenuItem x:Name="Oversigt" Header="Oversigt"  Background="#FF5F9FCB" />
+            </MenuItem>
+            <MenuItem x:Name="patientoversigt" Header="Patient oversigt" Background="#FF5F9FCB" Foreground="White" />
+            <MenuItem x:Name="Exit" Header="Exit"  Background="#FF5F9FCB" Foreground="White" Click="Exit_Click" />
+        </Menu>
+    </Grid>
+</Window>

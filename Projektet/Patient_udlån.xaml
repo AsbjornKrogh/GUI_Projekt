@@ -1,0 +1,39 @@
+﻿<Window x:Class="Projektet_GUI.Patient_udlån"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projektet_GUI"
+        mc:Ignorable="d"
+        Title="Patient_udlån" Height="400" Width="280">
+    <Grid>
+        <TextBox x:Name="NavnTB" HorizontalAlignment="Left" Height="23" Margin="114,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Navn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,85,0,0" Width="69"/>
+        <TextBox x:Name="EfternavnTB" HorizontalAlignment="Left" Height="23" Margin="114,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Efternavn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,116,0,0" Width="69"/>
+        <Label Content="Fødselsdag dato              /            -" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" Width="224"/>
+        <Label Content="Vælg EKG" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,194,0,0" Width="97"/>
+        <ListBox x:Name="EKGmåler" HorizontalAlignment="Left" Height="26" Margin="112,194,0,0" VerticalAlignment="Top" Width="122" Loaded="EKGmåler_Loaded"/>
+        <Button x:Name="Submit" Content="Submit" HorizontalAlignment="Left" Margin="10,288,0,0" VerticalAlignment="Top" Width="83" Height="21" Click="Submit_Click"/>
+        <Button x:Name="Annullere" Content="Annuller" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="83" Height="21" Click="Annullere_Click"/>
+        <TextBox x:Name="cprTB" HorizontalAlignment="Left" Height="23" Margin="114,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="cprTB_KeyDown" Text="2509970000"/>
+        <Label Content="CPR" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,28,0,0" Width="34" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.551"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Hent data vh.a. CPR" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Width="188"/>
+        <Label Content="Årsag til udlån" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,225,0,0" Width="97"/>
+        <TextBox x:Name="Årsag" HorizontalAlignment="Left" Height="109" Margin="112,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122"/>
+        <Label Content="Hvis ingen information indskriv selv" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,57,0,0" Width="224"/>
+        <Button x:Name="Hent" Content="Hent" HorizontalAlignment="Left" Margin="15,32,0,0" VerticalAlignment="Top" Width="48" Click="Hent_Click"/>
+        <TextBox x:Name="dag" HorizontalAlignment="Left" Height="23" Margin="113,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32"/>
+        <TextBox x:Name="månTB" Height="23" Margin="156,153,85.333,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="årTB" HorizontalAlignment="Left" Height="23" Margin="202,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32"/>
+    </Grid>
+</Window>
