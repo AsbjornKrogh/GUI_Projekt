@@ -22,6 +22,8 @@ namespace Data
          this.Adresse = Adresse;
          this.Fødselsdato = Fødselsdato;
             this.Peter = "nice";
+
+            kukkuk
       }
 
 
