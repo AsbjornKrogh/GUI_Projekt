@@ -12,6 +12,7 @@ namespace Projektet_GUI
    {
       Patient_udlån Udlån;
       EKG_Indlevering Indlevering;
+     // Patientoversigt
 
       public List<Person> people;
       public List<PatientUdlån> patient;
