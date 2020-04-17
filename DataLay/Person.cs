@@ -21,6 +21,10 @@ namespace Data
          this.Efternavn = Efternavn;
          this.Adresse = Adresse;
          this.Fødselsdato = Fødselsdato;
+
+
+            Kukkeluk
+            
             
 
       }
