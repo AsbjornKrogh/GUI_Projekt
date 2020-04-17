@@ -23,7 +23,7 @@ namespace Data
          this.Fødselsdato = Fødselsdato;
 
 
-            Kukkeluk
+            
             
             
       }
