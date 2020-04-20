@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projektet", "Projektet\Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "DataLay\Data.csproj", "{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_GUI", "..\..\..\OneDrive\Skrivebord\Rawr\ST\2. semster\Programmering 2\Project_GUI\Project_GUI.csproj", "{8904CDA5-0691-4A7D-80B1-D9678FAD0239}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8904CDA5-0691-4A7D-80B1-D9678FAD0239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8904CDA5-0691-4A7D-80B1-D9678FAD0239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8904CDA5-0691-4A7D-80B1-D9678FAD0239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8904CDA5-0691-4A7D-80B1-D9678FAD0239}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

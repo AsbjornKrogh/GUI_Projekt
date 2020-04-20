@@ -27,7 +27,7 @@ namespace Projektet_GUI
       private List<PatientUdlån> patient;
       Person patient1 = new Person(2502950000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
       Person patient2 = new Person(2509970000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
-      Person patient3 = new Person(2503980000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
+      Person patient3 = new Person(2008951234, "Rikke", "Laugesen", "Kaserneboulevarden 31 3.", new Dato(20, 8, 1995));
 
       public Patient_udlån(MainWindow main)
       {

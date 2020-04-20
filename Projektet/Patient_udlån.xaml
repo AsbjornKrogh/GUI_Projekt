@@ -13,7 +13,7 @@
         <Label Content="Efternavn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,116,0,0" Width="69"/>
         <Label Content="Fødselsdag dato              /            -" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" Width="224"/>
         <Label Content="Vælg EKG" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,194,0,0" Width="97"/>
-        <ListBox x:Name="EKGmåler" HorizontalAlignment="Left" Height="26" Margin="112,194,0,0" VerticalAlignment="Top" Width="122" Loaded="EKGmåler_Loaded"/>
+        <ListBox x:Name="EKGmåler" HorizontalAlignment="Left" Height="27" Margin="112,194,0,0" VerticalAlignment="Top" Width="128" Loaded="EKGmåler_Loaded"/>
         <Button x:Name="Submit" Content="Submit" HorizontalAlignment="Left" Margin="10,288,0,0" VerticalAlignment="Top" Width="83" Height="21" Click="Submit_Click"/>
         <Button x:Name="Annullere" Content="Annuller" HorizontalAlignment="Left" Margin="10,316,0,0" VerticalAlignment="Top" Width="83" Height="21" Click="Annullere_Click"/>
         <TextBox x:Name="cprTB" HorizontalAlignment="Left" Height="23" Margin="114,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="cprTB_KeyDown" Text="2509970000"/>
@@ -34,6 +34,6 @@
         <Button x:Name="Hent" Content="Hent" HorizontalAlignment="Left" Margin="15,32,0,0" VerticalAlignment="Top" Width="48" Click="Hent_Click"/>
         <TextBox x:Name="dag" HorizontalAlignment="Left" Height="23" Margin="113,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32"/>
         <TextBox x:Name="månTB" Height="23" Margin="156,153,85.333,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="årTB" HorizontalAlignment="Left" Height="23" Margin="202,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32"/>
+        <TextBox x:Name="årTB" HorizontalAlignment="Left" Height="23" Margin="202,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41"/>
     </Grid>
 </Window>
