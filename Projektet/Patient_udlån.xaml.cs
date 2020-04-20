@@ -23,21 +23,11 @@ namespace Projektet_GUI
    {
       MainWindow Main;
 
-      private List<Person> people;
-      private List<PatientUdlån> patient;
-      Person patient1 = new Person(2502950000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
-      Person patient2 = new Person(2509970000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
-      Person patient3 = new Person(2503980000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
-
       public Patient_udlån(MainWindow main)
       {
          InitializeComponent();
          Main = main;
-         patient = new List<PatientUdlån>(); 
-         people = new List<Person>();
-         people.Add(patient1);
-         people.Add(patient2);
-         people.Add(patient3);
+    
       }
 
   
@@ -48,9 +38,6 @@ namespace Projektet_GUI
          switch (result)
          {
             case MessageBoxResult.Yes:
-               Main.patient.Add(new PatientUdlån(Convert.ToInt64(cprTB.Text), NavnTB.Text, EfternavnTB.Text, "Mangle", new Dato(Convert.ToInt32(dag.Text), Convert.ToInt32(månTB.Text), Convert.ToInt32(årTB.Text)), DateTime.Now, Convert.ToInt32(EKGmåler.SelectedItem), Årsag.Text));
-               MessageBox.Show("EKG måler med ID: " + EKGmåler.SelectedItem + "er udlånt til " + NavnTB.Text, "Udlån", MessageBoxButton.OK, MessageBoxImage.Information); 
-               Close();
                break;
             case MessageBoxResult.No:
                break;
@@ -64,7 +51,7 @@ namespace Projektet_GUI
 
       private void Hent_Click(object sender, RoutedEventArgs e)
       {
-         people = sqliteDataAccess.GetPeople();
+         
       }
 
    
