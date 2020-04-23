@@ -10,40 +10,41 @@ namespace Projektet_GUI
    /// </summary>
    public partial class MainWindow : Window
    {
-      Patient_udlån Udlån;
-      EKG_Indlevering Indlevering;
+      
   
 
       public MainWindow()
       {
          InitializeComponent();
       }
-      private void Window_Loaded(object sender, RoutedEventArgs e)
-      {
-         Udlån = new Patient_udlån(this);
-         Indlevering = new EKG_Indlevering(this);
-      }
 
-      private void Udlån_EKG_Click(object sender, RoutedEventArgs e)
-      {
-         Udlån.Show();
-      }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
 
-      private void Indlevering_af_EKG_Click(object sender, RoutedEventArgs e)
-      {
-         Indlevering.Show();
-      }
+        }
 
-      private void Exit_Click(object sender, RoutedEventArgs e)
-      {
-         Application.Current.Shutdown();
-      }
+        private void ExitM_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
 
-      public List<Person> peoples()
-      {
-         return people;
-      }
+      
 
+        private void UdlånEkgM_Click(object sender, RoutedEventArgs e)
+        {
 
-   }
+        }
+
+        private void IndleverEkgM_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OversigtM_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+     
+    }
 }
