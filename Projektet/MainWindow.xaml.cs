@@ -12,16 +12,20 @@ namespace Projektet_GUI
    {
       Patient_udlån Udlån;
       EKG_Indlevering Indlevering;
+      Oversigt oversigt; 
+      SqlDBDataAccess Access;
   
 
       public MainWindow()
       {
          InitializeComponent();
+         Access = new SqlDBDataAccess(); 
       }
       private void Window_Loaded(object sender, RoutedEventArgs e)
       {
          Udlån = new Patient_udlån(this);
          Indlevering = new EKG_Indlevering(this);
+         oversigt = new Oversigt(this); 
       }
 
       private void Udlån_EKG_Click(object sender, RoutedEventArgs e)
@@ -34,6 +38,8 @@ namespace Projektet_GUI
          Indlevering.Show();
       }
 
+
+
       private void Exit_Click(object sender, RoutedEventArgs e)
       {
          Application.Current.Shutdown();
@@ -41,9 +47,23 @@ namespace Projektet_GUI
 
       public List<Person> peoples()
       {
-         return people;
+         return null; 
       }
 
+        private void ConnectionB_Click(object sender, RoutedEventArgs e)
+        {
+         //int i = Access.ConnectionTest();
 
+         //if (i == 1)
+         //   Statement.Text = " Den er sku god nok";
+         //if (i == 2)
+         //   Statement.Text = " Prøv igen makker"; 
+
+        }
+
+      private void patientoversigt_Click(object sender, RoutedEventArgs e)
+      {
+         oversigt.ShowDialog(); 
+      }
    }
 }

@@ -23,12 +23,6 @@ namespace Projektet_GUI
    {
       MainWindow Main;
 
-      private List<Person> people;
-      private List<PatientUdlån> patient;
-      Person patient1 = new Person(2502950000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
-      Person patient2 = new Person(2509970000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
-      Person patient3 = new Person(2503980000, "Ditte", "Eskildsen", "Holdevej 47", new Dato(1, 3, 1997));
-
       public Patient_udlån(MainWindow main)
       {
          InitializeComponent();
@@ -60,41 +54,13 @@ namespace Projektet_GUI
          
       }
 
-   
-
          private void cprTB_KeyDown(object sender, KeyEventArgs e)
          {
-            if (e.Key == Key.Return)
-            {
-               foreach (Person person in people)
-               {
-               if (Convert.ToInt64(cprTB.Text) == person.CPR)
-               {
-                  NavnTB.Text = person.Navn;
-                  EfternavnTB.Text = person.Efternavn;
-                  dag.Text = Convert.ToString(person.Fødselsdato.Dag);
-                  månTB.Text = Convert.ToString(person.Fødselsdato.Måned);
-                  årTB.Text = Convert.ToString(person.Fødselsdato.År);
-               }
-           
-               }
-            }
+         
          }
 
          private void EKGmåler_Loaded(object sender, RoutedEventArgs e)
          {
-
-         EKGmåler.Items.Add(1011);
-         EKGmåler.Items.Add(1012);
-         EKGmåler.Items.Add(1013);
-         EKGmåler.Items.Add(1014);
-
-         for (int i = 0; i < 5; ++i)
-         {
-            foreach (PatientUdlån patient in Main.patient)
-               if (patient.EKG_ID == 1010 + i)
-                  EKGmåler.Items.Remove(1010 + i);
-           }
 
          }
 

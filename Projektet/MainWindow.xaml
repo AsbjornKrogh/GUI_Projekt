@@ -13,8 +13,10 @@
                 <MenuItem x:Name="Indlevering_af_EKG" Header="Indlevering af EKG"  Background="#FF5F9FCB" Click="Indlevering_af_EKG_Click"  />
                 <MenuItem x:Name="Oversigt" Header="Oversigt"  Background="#FF5F9FCB" />
             </MenuItem>
-            <MenuItem x:Name="patientoversigt" Header="Patient oversigt" Background="#FF5F9FCB" Foreground="White" />
+            <MenuItem x:Name="patientoversigt" Header="Patient oversigt" Background="#FF5F9FCB" Foreground="White" Click="patientoversigt_Click" />
             <MenuItem x:Name="Exit" Header="Exit"  Background="#FF5F9FCB" Foreground="White" Click="Exit_Click" />
         </Menu>
+        <Button x:Name="ConnectionB" Content="Button" HorizontalAlignment="Left" Margin="254,131,0,0" VerticalAlignment="Top" Width="158" Height="30" Click="ConnectionB_Click"/>
+        <TextBlock x:Name="Statement" HorizontalAlignment="Left" Margin="254,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="158"/>
     </Grid>
 </Window>

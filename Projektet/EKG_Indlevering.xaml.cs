@@ -34,49 +34,17 @@ namespace Projektet_GUI
       
       private void EKGID_KeyDown(object sender, KeyEventArgs e)
       {
-         if (e.Key == Key.Return)
-         {
-            foreach (PatientUdlån patient in Main.patient)
-            {
-               if (Convert.ToInt64(EKGID.Text) == patient.EKG_ID)
-               {
-                  NavnTB.Text = patient.Navn;
-                  infoTB.Text = patient.ToString();
-
-               }
-            }
-         }
+        
       }
 
       private void Button_Click(object sender, RoutedEventArgs e)
       {
-         foreach (PatientUdlån patient in Main.patient)
-         {
-            if (Convert.ToInt64(EKGID.Text) == patient.EKG_ID)
-            {
-               NavnTB.Text = patient.Navn;
-               infoTB.Text = patient.ToString();
-               MessageBox.Show("Indlevering af EKG måler med ID " + patient.EKG_ID + " er gennemført");
-               Main.patient.Remove(patient);
-               break; 
-            }
-         }
-         Close(); 
-         
-
+  
       }
 
       private void Hent_info_Click(object sender, RoutedEventArgs e)
       {
-         foreach (PatientUdlån patient in Main.patient)
-         {
-            if (Convert.ToInt64(EKGID.Text) == patient.EKG_ID)
-            {
-               NavnTB.Text = patient.Navn;
-               infoTB.Text = patient.ToString();
-               break;
-            }
-         }
+        
       }
    }
 }

@@ -21,27 +21,26 @@ namespace Projektet_GUI
    public partial class Oversigt : Window
    {
       MainWindow Main;
+      SqlDBDataAccess DB;
 
       public Oversigt(MainWindow main)
       {
          InitializeComponent();
          Main = main;
+         DB = new SqlDBDataAccess(); 
       }
 
       private void Oversigt1_Loaded(object sender, RoutedEventArgs e)
       {
-         Tilgængelige.Items.Add(1011);
-         Tilgængelige.Items.Add(1012);
-         Tilgængelige.Items.Add(1013);
-         Tilgængelige.Items.Add(1014);
+         List<string> names = new List<string>(); 
+         names = DB.ConnectionTest();
 
-         for (int i = 0; i < 5; ++i)
+         foreach (var item in names)
          {
-            foreach (PatientUdlån patient in Main.patient)
-               if (patient.EKG_ID == 1010 + i)
-                  Tilgængelige.Items.Remove(1010 + i);
-                  udlånte.Items.Add(1010 + i); 
+            PatienterLB.Items.Add(item); 
          }
+
+
       }
    }
 }
