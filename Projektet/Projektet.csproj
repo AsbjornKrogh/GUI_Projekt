@@ -59,6 +59,9 @@
     <Compile Include="IndleverEKG.xaml.cs">
       <DependentUpon>IndleverEKG.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Oversigt.xaml.cs">
+      <DependentUpon>Oversigt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UdlånEKG.xaml.cs">
       <DependentUpon>UdlånEKG.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Oversigt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UdlånEKG.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
