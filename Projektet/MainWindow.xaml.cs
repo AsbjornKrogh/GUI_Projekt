@@ -10,32 +10,28 @@ namespace Projektet_GUI
    /// </summary>
    public partial class MainWindow : Window
    {
-      Patient_udlån Udlån;
-      EKG_Indlevering Indlevering;
-      Oversigt oversigt; 
+   
       SqlDBDataAccess Access;
   
 
       public MainWindow()
       {
-         InitializeComponent();
+    
          Access = new SqlDBDataAccess(); 
       }
       private void Window_Loaded(object sender, RoutedEventArgs e)
       {
-         Udlån = new Patient_udlån(this);
-         Indlevering = new EKG_Indlevering(this);
-         oversigt = new Oversigt(this); 
+
       }
 
       private void Udlån_EKG_Click(object sender, RoutedEventArgs e)
       {
-         Udlån.Show();
+
       }
 
       private void Indlevering_af_EKG_Click(object sender, RoutedEventArgs e)
       {
-         Indlevering.Show();
+
       }
 
 
@@ -63,7 +59,7 @@ namespace Projektet_GUI
 
       private void patientoversigt_Click(object sender, RoutedEventArgs e)
       {
-         oversigt.ShowDialog(); 
+
       }
    }
 }
