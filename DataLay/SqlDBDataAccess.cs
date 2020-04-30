@@ -22,20 +22,26 @@ namespace Data
          connection = new SqlConnection(connetionStringST);
       }
 
+
+
       public void savePatient(string CPR, string navn, string efternavn, int EKGid)
       {
          connection.Open();
 
          string insertStringParam = @"INSERT INTO dbo.EKGPatient (CPR,navn,Efternavn,EKGID) 
-                                      VALUES("+ CPR + ", "+ navn + ", "+ efternavn + ", " + EKGid + ")";
+                                      VALUES(@CPR, @navn, @efternavn, @EKGid)";
 
          using (SqlCommand cmd = new SqlCommand(insertStringParam, connection))
          {
 
-            //cmd.Parameters.AddWithValue("@CPR", CPR);
-            //cmd.Parameters.AddWithValue("@navn", navn);
-            //cmd.Parameters.AddWithValue("@Efternavn", efternavn);
-            //cmd.Parameters.AddWithValue("@EKGID", EKGid);
+            cmd.Parameters.AddWithValue("@CPR", CPR);
+            cmd.Parameters.AddWithValue("@navn", navn);
+            cmd.Parameters.AddWithValue("@efternavn", efternavn);
+            cmd.Parameters.AddWithValue("@EKGid", EKGid);
+            cmd.ExecuteReader(); 
+
+
+
 
          }
 
