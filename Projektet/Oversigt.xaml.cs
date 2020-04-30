@@ -16,32 +16,27 @@ using Projektet_GUI;
 
 namespace Projektet
 {
-    /// <summary>
-    /// Interaction logic for Oversigt.xaml
-    /// </summary>
-    public partial class Oversigt : Window
-    {
-        MainWindow Main;
-        public Oversigt(MainWindow main)
-        {
-            InitializeComponent();
-            Main = main;
-        }
+   /// <summary>
+   /// Interaction logic for Oversigt.xaml
+   /// </summary>
+   public partial class Oversigt : Window
+   {
+      MainWindow Main;
+      public Oversigt(MainWindow main)
+      {
+         InitializeComponent();
+         Main = main;
+      }
 
-        private void Oversigt1_Loaded(object sender, RoutedEventArgs e)
-        {
-            LedigeLB.Items.Add(1011);
-            LedigeLB.Items.Add(1012);
-            LedigeLB.Items.Add(1013);
-            LedigeLB.Items.Add(1014);
-
-            for (int i = 0; i < 5; ++i)
-            {
-                foreach (PatientUdlån patient in Main.patient)
-                    if (patient.EKG_ID == 1 + i)
-                        LedigeLB.Items.Remove(1 + i);
-                UdlånteLB.Items.Add(1 + i);
-            }
-        }
-    }
+      private void Oversigt1_Loaded(object sender, RoutedEventArgs e)
+      {
+         //for (int i = 0; i < 5; ++i)
+         //{
+         //   foreach (PatientUdlån patient in Main.patient)
+         //      if (patient.EKG_ID == 1 + i)
+         //         LedigeLB.Items.Remove(1 + i);
+         //   UdlånteLB.Items.Add(1 + i);
+         //}
+      }
+   }
 }

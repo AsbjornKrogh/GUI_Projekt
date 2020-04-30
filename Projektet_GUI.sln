@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projektet", "Projektet\Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "DataLay\Data.csproj", "{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayer", "LogicLayer\LogicLayer.csproj", "{B4BB3C6B-AEAA-4918-B250-D19EBE15AABE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOLayer", "DTOLayer\DTOLayer.csproj", "{CE89E4A1-A556-413D-86D7-821BE20341DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAFEA7B5-E80D-49F2-9A10-6C62CD2BC0AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4BB3C6B-AEAA-4918-B250-D19EBE15AABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4BB3C6B-AEAA-4918-B250-D19EBE15AABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4BB3C6B-AEAA-4918-B250-D19EBE15AABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4BB3C6B-AEAA-4918-B250-D19EBE15AABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE89E4A1-A556-413D-86D7-821BE20341DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE89E4A1-A556-413D-86D7-821BE20341DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE89E4A1-A556-413D-86D7-821BE20341DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE89E4A1-A556-413D-86D7-821BE20341DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -34,30 +34,30 @@ namespace Projektet
 
         private void HentinfoB_Click(object sender, RoutedEventArgs e)
         {
-            foreach(PatientUdlån patient in Main.Patient)
-         {
-                if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
-                {
-                    IDTB.Text = patient.Navn;
-                    InfoTB.Text = patient.ToString();
-                    break;
-                }
-            }
+            //foreach(PatientUdlån patient in Main.Patient)
+            //{
+            //    if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
+            //    {
+            //        IDTB.Text = patient.Navn;
+            //        InfoTB.Text = patient.ToString();
+            //        break;
+            //    }
+            //}
         }
 
         private void IndleverB_Click(object sender, RoutedEventArgs e)
         {
-            foreach (PatientUdlån patient in Main.patient)
-            {
-                if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
-                {
-                    IDTB.Text = patient.Navn;
-                    InfoTB.Text = patient.ToString();
-                    MessageBox.Show("Indlevering af EKG måler med ID " + patient.EKG_ID + " er gennemført");
-                    Main.patient.Remove(patient);
-                    break;
-                }
-            }
+            //foreach (PatientUdlån patient in Main.patient)
+            //{
+            //    if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
+            //    {
+            //        IDTB.Text = patient.Navn;
+            //        InfoTB.Text = patient.ToString();
+            //        MessageBox.Show("Indlevering af EKG måler med ID " + patient.EKG_ID + " er gennemført");
+            //        Main.patient.Remove(patient);
+            //        break;
+            //    }
+            //}
             Close();
         }
 
@@ -68,18 +68,18 @@ namespace Projektet
 
         private void IDTB_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Return)
-            {
-                foreach (PatientUdlån patient in Main.Patient)
-                {
-                    if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
-                    {
-                        IDTB.Text = patient.Navn;
-                        InfoTB.Text = patient.ToString();
+            //if (e.Key == Key.Return)
+            //{
+            //    foreach (PatientUdlån patient in Main.Patient)
+            //    {
+            //        if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
+            //        {
+            //            IDTB.Text = patient.Navn;
+            //            InfoTB.Text = patient.ToString();
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
         }
     }
 }

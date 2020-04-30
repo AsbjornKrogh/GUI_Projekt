@@ -11,54 +11,46 @@ namespace Projektet_GUI
    /// </summary>
    public partial class MainWindow : Window
    {
-        UdlånEKG Udlån;
-        IndleverEKG Indlever;
-        Oversigt oversigt;
-  
+      UdlånEKG Udlån;
+      IndleverEKG Indlever;
+      Oversigt oversigt;
+
 
       public MainWindow()
       {
          InitializeComponent();
       }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Udlån = new UdlånEKG(this);
-            Indlever = new IndleverEKG(this);
-            oversigt = new Oversigt(this);
-            
+      private void Window_Loaded(object sender, RoutedEventArgs e)
+      {
+         Udlån = new UdlånEKG(this);
+         Indlever = new IndleverEKG(this);
+         oversigt = new Oversigt(this);
+      }
 
-        }
+      private void ExitM_Click(object sender, RoutedEventArgs e)
+      {
+         Application.Current.Shutdown();
+      }
 
-      private void Indlevering_af_EKG_Click(object sender, RoutedEventArgs e)
+      private void PatintovM_Click(object sender, RoutedEventArgs e)
       {
 
       }
-        private void ExitM_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
 
-      
+      private void IndleverEkgM_Click_1(object sender, RoutedEventArgs e)
+      {
+         Indlever.ShowDialog();
+      }
 
-        private void UdlånEkgM_Click(object sender, RoutedEventArgs e)
-        {
-            Udlån.Show();
-        }
+      private void UdlånEkgM_Click_1(object sender, RoutedEventArgs e)
+      {
+         Udlån.ShowDialog();
+      }
 
-        private void IndleverEkgM_Click(object sender, RoutedEventArgs e)
-        {
-            Indlever.Show();
-        }
-
-        private void OversigtM_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void PatintovM_Click(object sender, RoutedEventArgs e)
-        {
-            oversigt.Show();
-        }
-    }
+      private void OversigtM_Click_1(object sender, RoutedEventArgs e)
+      {
+         oversigt.ShowDialog();
+      }
+   }
 }

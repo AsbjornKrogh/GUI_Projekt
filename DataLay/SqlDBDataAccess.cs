@@ -9,19 +9,59 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
+      private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      private string ConnetionStringSToffentlig = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=ST2PRJ2OffEKGDatabase;Password=ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
+      private SqlConnection connection;
+      private SqlCommand command;
+      private string sql = null;
+      private SqlDataReader dataReader;
 
       public SqlDBDataAccess()
       {
+         connection = new SqlConnection(connetionStringST);
+      }
+
+      public void savePatient(string CPR, string navn, string efternavn, int EKGid)
+      {
+         connection.Open();
+
+         string insertStringParam = @"INSERT INTO dbo.EKGPatient (CPR,navn,Efternavn,EKGID) 
+                                      VALUES("+ CPR + ", "+ navn + ", "+ efternavn + ", " + EKGid + ")";
+
+         using (SqlCommand cmd = new SqlCommand(insertStringParam, connection))
+         {
+
+            //cmd.Parameters.AddWithValue("@CPR", CPR);
+            //cmd.Parameters.AddWithValue("@navn", navn);
+            //cmd.Parameters.AddWithValue("@Efternavn", efternavn);
+            //cmd.Parameters.AddWithValue("@EKGID", EKGid);
+
+         }
+
+         connection.Close();
 
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
       public List<string> ConnectionTest()
       {
          List<string> Liste = new List<string>();
-         int i = 1; 
+         int i = 1;
          string connetionString = null;
          string connetionStringST = null;
          SqlConnection connection;
@@ -41,16 +81,16 @@ namespace Data
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
-               Liste.Add(dataReader.GetString(i)); 
+               Liste.Add(dataReader.GetString(i));
             }
             dataReader.Close();
             command.Dispose();
             connection.Close();
-            return Liste; 
+            return Liste;
          }
          catch
          {
-            return null; 
+            return null;
          }
 
       }
@@ -159,7 +199,7 @@ namespace Data
       //   }
 
       //}
-   //}
+      //}
    }
 }
 
