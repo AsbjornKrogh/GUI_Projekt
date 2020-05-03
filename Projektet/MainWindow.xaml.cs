@@ -15,7 +15,6 @@ namespace Projektet_GUI
       IndleverEKG Indlever;
       Oversigt oversigt;
 
-
       public MainWindow()
       {
          InitializeComponent();
@@ -26,11 +25,6 @@ namespace Projektet_GUI
          Udlån = new UdlånEKG(this);
          Indlever = new IndleverEKG(this);
          oversigt = new Oversigt(this);
-      }
-
-      private void ExitM_Click(object sender, RoutedEventArgs e)
-      {
-         Application.Current.Shutdown();
       }
 
       private void PatintovM_Click(object sender, RoutedEventArgs e)
@@ -51,6 +45,16 @@ namespace Projektet_GUI
       private void OversigtM_Click_1(object sender, RoutedEventArgs e)
       {
          oversigt.ShowDialog();
+      }
+
+      private void EKG_program_Closed(object sender, EventArgs e)
+      {
+         Application.Current.Shutdown();
+      }
+
+      private void ExitM_Click(object sender, RoutedEventArgs e)
+      {
+         Application.Current.Shutdown();
       }
    }
 }

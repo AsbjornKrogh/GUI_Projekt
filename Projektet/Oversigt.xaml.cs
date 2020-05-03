@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Data;
 using Projektet_GUI;
+using DTO; 
 
 namespace Projektet
 {
@@ -22,21 +23,35 @@ namespace Projektet
    public partial class Oversigt : Window
    {
       MainWindow Main;
+
+      SqlDBDataAccess DBDataAccess;
+
+      private List<EKG> EKGmaalereListe;
+
       public Oversigt(MainWindow main)
       {
          InitializeComponent();
          Main = main;
+         DBDataAccess = new SqlDBDataAccess();
       }
 
       private void Oversigt1_Loaded(object sender, RoutedEventArgs e)
       {
-         //for (int i = 0; i < 5; ++i)
-         //{
-         //   foreach (PatientUdlån patient in Main.patient)
-         //      if (patient.EKG_ID == 1 + i)
-         //         LedigeLB.Items.Remove(1 + i);
-         //   UdlånteLB.Items.Add(1 + i);
-         //}
+         EKGmaalereListe = DBDataAccess.EKGMålere();
+
+         foreach (EKG item in EKGmaalereListe)
+         {
+            if (item.Availiable == true)
+            {
+               LedigeLB.Items.Add(item.EKGID); 
+            }
+            else
+            {
+               UdlånteLB.Items.Add(item.EKGID);
+            }
+               
+         }
+
       }
    }
 }

@@ -13,86 +13,97 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Data;
+using DTO;
 
 namespace Projektet
 {
-    /// <summary>
-    /// Interaction logic for UdlånEKG.xaml
-    /// </summary>
-    public partial class UdlånEKG : Window
-    {
-        MainWindow Main;
-        SqlDBDataAccess DBDataAccess; 
+   /// <summary>
+   /// Interaction logic for UdlånEKG.xaml
+   /// </summary>
+   public partial class UdlånEKG : Window
+   {
+      MainWindow Main;
+      SqlDBDataAccess DBDataAccess;
 
-        public UdlånEKG(MainWindow main)
-        {
-            InitializeComponent();
-            Main = main;
-         DBDataAccess = new SqlDBDataAccess(); 
-        }
+      private List<EKG> EKGmaalereListe;
+      private Patient person;
 
-        private void UdlånB_Click(object sender, RoutedEventArgs e)
-        {
-         DBDataAccess.savePatient("250997-0000", "Asbjørn", "Krogh", 1011); 
+      public UdlånEKG(MainWindow main)
+      {
+         InitializeComponent();
+         Main = main;
+         DBDataAccess = new SqlDBDataAccess();
 
+      }
 
-
-
-            MessageBoxResult result = MessageBox.Show("Er du sikker på at vil udlåne EKG-måler" + EKGmåler.SelectedItem + "til" + NavnTB.Text, "Advarsel", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            switch (result)
+      private void Udlån_Loaded(object sender, RoutedEventArgs e)
+      {
+         EKGmaalereListe = DBDataAccess.EKGMålere();
+         foreach (EKG item in EKGmaalereListe)
+         {
+            if (item.Availiable == true)
             {
-                case MessageBoxResult.Yes:
-                    break;
-                case MessageBoxResult.No:
-                    break;
+               EKGmåler.Items.Add(item.EKGID);
             }
+         }
 
-        }
+      }
 
-        private void AnnullerB_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+      private void UdlånB_Click(object sender, RoutedEventArgs e)
+      {
+         byte besked;
+         MessageBoxResult result = MessageBox.Show("Er du sikker på at vil udlåne EKG-måler " + EKGmåler.SelectedItem + " til " + NavnTB.Text, "Advarsel", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-        private void CPRTB_KeyDown(object sender, KeyEventArgs e)
-        {
-         //    if (e.Key == Key.Return)
-         //    {
-         //        foreach (Person person in people)
-         //        {
-         //            if (Convert.ToInt64(CPRTB.Text) == person.CPR)
-         //            {
-         //                NavnTB.Text = person.Navn;
-         //                EfterNavnTB.Text = person.Efternavn;
-         //                FødselsdagTB.Text = Convert.ToString(person.Fødselsdato.Dag.Måned.År);
-         //                firesidsteTB.Text = Convert.ToString(person.Fødselsdato.cpr);
+         switch (result)
+         {
+            case MessageBoxResult.Yes:
+               besked = DBDataAccess.UdlaanTilPatient(CPRTB.Text, NavnTB.Text, EfterNavnTB.Text, Convert.ToInt32(EKGmåler.SelectedItem));
+               if (besked == 2)
+                  MessageBox.Show("Patienten oprettet og EKG måler " + EKGmåler.SelectedItem + "udlånt"); 
+               if(besked == 1)
+                  MessageBox.Show("Patienten findes allerede i DB og har fået EKG måler " + EKGmåler.SelectedItem + "udlånt");
+               break;
 
-         //            }
+            case MessageBoxResult.No:
+               break;
+         }
+      }
 
-         //        }
-         //    }
+      private void AnnullerB_Click(object sender, RoutedEventArgs e)
+      {
+         Application.Current.Shutdown();
+      }
+
+      private void CPRTB_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.Key == Key.Return)
+         {
+            person = DBDataAccess.LoadPatientCPR(CPRTB.Text);
+
+            NavnTB.Text = person.Navn;
+            EfterNavnTB.Text = person.Efternavn;
+            FødselsdagTB.Text = Convert.ToString(person.CPR);
+         }
       }
 
       private void EKGmåler_Loaded(object sender, RoutedEventArgs e)
-        {
-            //EKGmåler.Items.Add(1);
-            //EKGmåler.Items.Add(2);
-            //EKGmåler.Items.Add(3);
-            //EKGmåler.Items.Add(4);
+      {
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    //foreach (PatientUdlån patient in Main.patient)
-            //    //    if (patient.EKG_ID == 1 + i)
-            //    //        EKGmåler.Items.Remove(1 + i);
-            //}
+      }
 
-        }
+      private void HentInfoB_Click(object sender, RoutedEventArgs e)
+      {
+         EKGmaalereListe = DBDataAccess.EKGMålere();
+         foreach (EKG item in EKGmaalereListe)
+         {
+            if (item.Availiable == true)
+            {
+               EKGmåler.Items.Add(item.EKGID);
+            }
+         }
+      }
 
-        private void HentInfoB_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-    }
-    
+   }
+
 }

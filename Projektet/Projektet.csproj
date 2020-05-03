@@ -124,6 +124,14 @@
       <Project>{eafea7b5-e80d-49f2-9a10-6c62cd2bc0ae}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTOLayer\DTOLayer.csproj">
+      <Project>{ce89e4a1-a556-413d-86d7-821be20341df}</Project>
+      <Name>DTOLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicLayer\LogicLayer.csproj">
+      <Project>{b4bb3c6b-aeaa-4918-b250-d19ebe15aabe}</Project>
+      <Name>LogicLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

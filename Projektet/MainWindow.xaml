@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projektet_GUI"
         mc:Ignorable="d"
-        Title="EKG program" Height="284.667" Width="378.667" Loaded="Window_Loaded" Background="#FFB3D7FF">
+        Title="EKG program" Height="284.667" Width="378.667" Loaded="Window_Loaded" Background="#FFB3D7FF" Closed="EKG_program_Closed">
     <Grid>
         <Menu HorizontalAlignment="Left" Height="46" Margin="41,60,0,0" VerticalAlignment="Top" Width="277" Background="#FFB3D7FF">
             <MenuItem x:Name="MenuM" Header="Menu" Height="34" Width="53" Background="#FF4395EE" FontFamily="Times New Roman" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="14">

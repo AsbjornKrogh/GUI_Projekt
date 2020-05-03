@@ -13,73 +13,48 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Data;
-
+using DTO;
 
 namespace Projektet
 {
-    /// <summary>
-    /// Interaction logic for IndleverEKG.xaml
-    /// </summary>
-    public partial class IndleverEKG : Window
-    {
-        MainWindow Main;
+   /// <summary>
+   /// Interaction logic for IndleverEKG.xaml
+   /// </summary>
+   public partial class IndleverEKG : Window
+   {
+      MainWindow Main;
+      SqlDBDataAccess DBDataAccess;
 
-        public IndleverEKG(MainWindow main)
-        {
-            InitializeComponent();
-            Main = main;
-            IDTB.Focus();
-            IDTB.SelectAll();
-        }
+      private Patient patient;
 
-        private void HentinfoB_Click(object sender, RoutedEventArgs e)
-        {
-            //foreach(PatientUdlån patient in Main.Patient)
-            //{
-            //    if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
-            //    {
-            //        IDTB.Text = patient.Navn;
-            //        InfoTB.Text = patient.ToString();
-            //        break;
-            //    }
-            //}
-        }
+      public IndleverEKG(MainWindow main)
+      {
+         InitializeComponent();
+         Main = main;
+         IDTB.Focus();
+         IDTB.SelectAll();
+         DBDataAccess = new SqlDBDataAccess();
+      }
 
-        private void IndleverB_Click(object sender, RoutedEventArgs e)
-        {
-            //foreach (PatientUdlån patient in Main.patient)
-            //{
-            //    if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
-            //    {
-            //        IDTB.Text = patient.Navn;
-            //        InfoTB.Text = patient.ToString();
-            //        MessageBox.Show("Indlevering af EKG måler med ID " + patient.EKG_ID + " er gennemført");
-            //        Main.patient.Remove(patient);
-            //        break;
-            //    }
-            //}
-            Close();
-        }
+      private void HentinfoB_Click(object sender, RoutedEventArgs e)
+      {
+         patient = DBDataAccess.LoadPatient(Convert.ToInt32(IDTB.Text));
 
-        private void AnnullerB_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+         InfoTB.Text = patient.Navn + " " + patient.Efternavn;  
+      }
 
-        private void IDTB_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.Key == Key.Return)
-            //{
-            //    foreach (PatientUdlån patient in Main.Patient)
-            //    {
-            //        if (Convert.ToInt64(IDTB.Text) == patient.EKG_ID)
-            //        {
-            //            IDTB.Text = patient.Navn;
-            //            InfoTB.Text = patient.ToString();
+      private void IndleverB_Click(object sender, RoutedEventArgs e)
+      {
+         DBDataAccess.IndleverEKG(patient.CPR, Convert.ToInt32(IDTB.Text)); 
+      }
 
-            //        }
-            //    }
-            //}
-        }
-    }
+      private void AnnullerB_Click(object sender, RoutedEventArgs e)
+      {
+         Application.Current.Shutdown();
+      }
+
+      private void IDTB_KeyDown(object sender, KeyEventArgs e)
+      {
+      }
+   }
 }
