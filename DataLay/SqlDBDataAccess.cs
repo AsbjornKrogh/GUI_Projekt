@@ -292,40 +292,41 @@ namespace Data
 
 
 
-      //Ikke inplementeret
-      //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
-      public EKG_Maaling LoadEKGMaaling()
-      {
-         MaalingListe = new List<EKG_Maaling>();
+        //Ikke inplementeret
+        //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
+        public EKG_Maaling LoadEKGMaaling()
+        {
+            MaalingListe = new List<EKG_Maaling>();
 
-         sql = "Select CPR, tidsstempel from dbo.EKGData Where tidstempel = '" + CPR + "'";
+            sql = "Select CPR, tidsstempel from dbo.EKGData Where tidstempel = '" + CPR + "'";
 
-         try
-         {
-            connection.Open();
-
-            command = new SqlCommand(sql, connection);
-
-            dataReader = command.ExecuteReader();
-
-            while (dataReader.Read())
+            try
             {
-               MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"])));
+                connection.Open();
+
+                command = new SqlCommand(sql, connection);
+
+                dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"])));
+                }
+
+                dataReader.Close();
+
+                command.Dispose();
+
+                connection.Close();
+
+                return MaalingListe;
             }
-
-            dataReader.Close();
-
-            command.Dispose();
-
-            connection.Close();
-
-            return MaalingListe;
-         }
-         catch
-         {
-            return null;
-         }
-         return 
+            catch
+            {
+                return null;
+            }
+            return
+                  
       }
 
 

@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projektet_GUI"
         mc:Ignorable="d"
-        Title="EKG program" Height="284.667" Width="378.667" Loaded="Window_Loaded" Background="#FFB3D7FF" Closed="EKG_program_Closed">
+        Title="EKG program" Height="191.822" Width="362.901" Loaded="Window_Loaded" Background="#FFB3D7FF" Closed="EKG_program_Closed">
     <Grid>
         <Menu HorizontalAlignment="Left" Height="46" Margin="41,60,0,0" VerticalAlignment="Top" Width="277" Background="#FFB3D7FF">
             <MenuItem x:Name="MenuM" Header="Menu" Height="34" Width="53" Background="#FF4395EE" FontFamily="Times New Roman" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Stretch" FontSize="14">
                 <MenuItem x:Name="UdlånEkgM" Header="Udlån EKG-Måler" HorizontalAlignment="Left" Height="32" Width="191" Background="#FFC9E0F8" Margin="-25,0,-26,0" Click="UdlånEkgM_Click_1" />
                 <MenuItem x:Name="IndleverEkgM" Header="Indlever EKG-Måler" HorizontalAlignment="Left" Height="32" Width="313" Margin="-25,0,-148,0" Background="#FFCCE0F6" FontWeight="Bold" Click="IndleverEkgM_Click_1" />
-                <MenuItem x:Name="OversigtM" Header="Oversigt" HorizontalAlignment="Left" Height="32" Width="285" Margin="-25,0,-120,0" Background="#FFC5DBF2" RenderTransformOrigin="0.513,0.505" Click="OversigtM_Click_1" />
+
             </MenuItem>
             <MenuItem x:Name="PatintovM" Header="Patient oversigt" Height="34" Width="111" Background="#FF629FEA" FontFamily="Times New Roman" FontWeight="Bold" FontSize="14" Click="PatintovM_Click"/>
             <MenuItem x:Name="ExitM" Header="Exit" Height="34" Width="61" RenderTransformOrigin="0.5,0.5" Background="#FF96C2E6" FontFamily="Times New Roman" FontWeight="Bold" FontSize="14" Click="ExitM_Click">
