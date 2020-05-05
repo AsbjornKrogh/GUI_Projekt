@@ -10,7 +10,7 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
-      #
+      
       //Atributter og objetkter 
       //Connectionsstrings til Lokal og Offentlig Database. 
       private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
