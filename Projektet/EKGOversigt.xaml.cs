@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Data;
 using DTO;
+using LogicLayer;
 
 namespace Projektet
 {
@@ -21,30 +22,51 @@ namespace Projektet
     /// </summary>
     public partial class EKGOversigt : Window
     {
-        public EKGOversigt()
+        private List<Patient> PatientListe;
+        private Logic logicref;
+        private List<EKG_Maaling> MaalingListe;
+        public EKGOversigt(Logic logicref)
         {
             InitializeComponent();
+            this.logicref = logicref;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //adgang til EGKPatient hvor der skal hentes navne og efternavn. 
-            // Ansvarliges fornavn, efternavn og medarbejder nummer udfyldes automatisk (default)
+            logicref.getPatientListe();
+            foreach (Patient item in PatientListe)
+            {
+                PatientLB.Items.Add(item.Navn); //HJÆLP!
+            }
+
+            fnTB.Text = "Søren";
+            EfTB.Text = "Pedersen";
+            MedarnrTB.Text = "12435687";
         }
 
         private void GemB_Click(object sender, RoutedEventArgs e)
         {
-            //uploadet alle informationer
+            //uploadet alle informationer til EGKmålinger og EKGData (offentlige)
         }
 
         // eventhandler for et item er valgt i patientLB
-        // adgang til EKGPatient hvor vi henter dato for alle miloinger for den pågældende patient og lægger det ind i DatoLB
-
-        // Eventhandler for et item er valgt i DatoLB.
-        // EKG-målingen, cpr, patient beskrivelse vises.
 
 
+        private void PatientLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            logicref.getMaalingListe();
+            foreach (EKG_Maaling item in MaalingListe)
+            {
+                DatoLB.Items.Add(item.DateTime);
+            }
+        }
 
+        
+        private void DatoLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // EKG-målingen, cpr, patient beskrivelse vises.
+        }
 
     }
+    
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using Data;
 using Projektet;
+using LogicLayer;
 
 namespace Projektet_GUI
 {
@@ -13,18 +14,22 @@ namespace Projektet_GUI
    {
       UdlånEKG Udlån;
       IndleverEKG Indlever;
-      Oversigt oversigt;
+        Logic logicobj;
+
+
+     
 
       public MainWindow()
       {
          InitializeComponent();
+            logicobj = new Logic();
       }
 
       private void Window_Loaded(object sender, RoutedEventArgs e)
       {
-         Udlån = new UdlånEKG(this);
-         Indlever = new IndleverEKG(this);
-         oversigt = new Oversigt(this);
+         Udlån = new UdlånEKG(this, logicobj);
+         Indlever = new IndleverEKG(this, logicobj);
+         
       }
 
       private void PatintovM_Click(object sender, RoutedEventArgs e)
@@ -42,10 +47,7 @@ namespace Projektet_GUI
          Udlån.ShowDialog();
       }
 
-      private void OversigtM_Click_1(object sender, RoutedEventArgs e)
-      {
-         oversigt.ShowDialog();
-      }
+     
 
       private void EKG_program_Closed(object sender, EventArgs e)
       {

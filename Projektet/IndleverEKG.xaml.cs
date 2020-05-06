@@ -14,47 +14,72 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Data;
 using DTO;
+using LogicLayer;
 
 namespace Projektet
 {
-   /// <summary>
-   /// Interaction logic for IndleverEKG.xaml
-   /// </summary>
-   public partial class IndleverEKG : Window
-   {
-      MainWindow Main;
-      SqlDBDataAccess DBDataAccess;
+    /// <summary>
+    /// Interaction logic for IndleverEKG.xaml
+    /// </summary>
+    public partial class IndleverEKG : Window
+    {
+        MainWindow Main;
+        SqlDBDataAccess DBDataAccess;
 
-      private Patient patient;
+        private Patient patient;
+        private Logic logicref;
 
-      public IndleverEKG(MainWindow main)
-      {
-         InitializeComponent();
-         Main = main;
-         IDTB.Focus();
-         IDTB.SelectAll();
-         DBDataAccess = new SqlDBDataAccess();
-      }
+        
 
-      private void HentinfoB_Click(object sender, RoutedEventArgs e)
-      {
-         patient = DBDataAccess.LoadPatient(Convert.ToInt32(IDTB.Text));
+        public IndleverEKG(MainWindow main, Logic logicref)
+        {
+            InitializeComponent();
+            Main = main;
+            IDTB.Focus();
+            IDTB.SelectAll();
+            DBDataAccess = new SqlDBDataAccess();
+            this.logicref = logicref;
 
-         InfoTB.Text = patient.Navn + " " + patient.Efternavn;  
-      }
+        }
 
-      private void IndleverB_Click(object sender, RoutedEventArgs e)
-      {
-         DBDataAccess.IndleverEKG(patient.CPR, Convert.ToInt32(IDTB.Text)); 
-      }
+        private void HentinfoB_Click(object sender, RoutedEventArgs e)
+        {
+            patient = logicref.getCPR();
 
-      private void AnnullerB_Click(object sender, RoutedEventArgs e)
-      {
-         Application.Current.Shutdown();
-      }
+            InfoTB.Text = patient.Navn + " " + patient.Efternavn;
+        }
 
-      private void IDTB_KeyDown(object sender, KeyEventArgs e)
-      {
-      }
-   }
+        private void IndleverB_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra" + patient.Navn + patient.Efternavn + "med tilhørende EKDID:" + patient.EKGID + "?", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+
+                    MessageBox.Show("EKG-Måler med EKGID'et" + patient.EKGID + "er hermed indleveret");
+                    logicref.indleverEkgMåler();
+
+                    break;
+
+                case MessageBoxResult.No:
+                    break;
+            }
+
+        }
+
+        private void AnnullerB_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void IDTB_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+
+    }
+
+        
+
 }
