@@ -49,7 +49,7 @@ namespace Projektet
             {
                 if (item.Availiable == true)
                 {
-                    EKGmåler.Items.Add(item.EKGID);
+                    EKGmålerId.Items.Add(item.EKGID);
                 }
             }
 
@@ -58,16 +58,16 @@ namespace Projektet
         private void UdlånB_Click(object sender, RoutedEventArgs e)
         {
             byte besked;
-            MessageBoxResult result = MessageBox.Show("Er du sikker på at vil udlåne EKG-måler " + EKGmåler.SelectedItem + " til " + NavnTB.Text, "Advarsel", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show("Er du sikker på at vil udlåne EKG-måler " + EKGmålerId.SelectedItem + " til " + NavnTB.Text, "Advarsel", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    besked = logicref.getudlånBesked();
+                    besked = logicref.getudlånBesked(CPRTB.Text, NavnTB.Text, EfterNavnTB.Text, Convert.ToInt32(EKGmålerId.SelectedItem));
                     if (besked == 2)
-                        MessageBox.Show("Patienten oprettet og EKG måler " + EKGmåler.SelectedItem + "udlånt");
+                        MessageBox.Show("Patienten oprettet og EKG måler " + EKGmålerId.SelectedItem + "udlånt");
                     if (besked == 1)
-                        MessageBox.Show("Patienten findes allerede i DB og har fået EKG måler " + EKGmåler.SelectedItem + "udlånt");
+                        MessageBox.Show("Patienten findes allerede i DB og har fået EKG måler " + EKGmålerId.SelectedItem + "udlånt");
                     break;
 
                 case MessageBoxResult.No:
@@ -84,7 +84,7 @@ namespace Projektet
         {
             if (e.Key == Key.Return)
             {
-                person = logicref.getCPR();
+                person = logicref.getCPR(CPRTB.Text);
 
                 NavnTB.Text = person.Navn;
                 EfterNavnTB.Text = person.Efternavn;
@@ -104,7 +104,7 @@ namespace Projektet
             {
                 if (item.Availiable == true)
                 {
-                    EKGmåler.Items.Add(item.EKGID);
+                    EKGmålerId.Items.Add(item.EKGID);
                 }
             }
         }

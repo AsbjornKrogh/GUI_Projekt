@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using DTO;
 using Data;
-
+using System.Linq.Expressions;
 
 namespace Data
 {
@@ -14,10 +14,11 @@ namespace Data
       //Atributter og objetkter 
       //Connectionsstrings til Lokal og Offentlig Database. 
       private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-      private string ConnetionStringSToffentlig = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=ST2PRJ2OffEKGDatabase;Password=ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      private string connetionStringSToffentlig = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=ST2PRJ2OffEKGDatabase;Password=ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
       //SQL 
       private SqlConnection connection;
+      private SqlConnection connectionOff;
       private SqlCommand command;
       private string sql = null;
       private SqlDataReader dataReader;
@@ -33,6 +34,7 @@ namespace Data
       public SqlDBDataAccess()
       {
          connection = new SqlConnection(connetionStringST);
+         connectionOff = new SqlConnection(connetionStringSToffentlig);
       }
 
       //Metoden udlåner et EKG til en patient og læser ham ind i listen. 
@@ -233,6 +235,7 @@ namespace Data
       }
 
       //Henter 1 patient fra DB, hvor EKGID'et stemmer overens (Bruges i Indlever vinduet) 
+      // Sprøg Asbjørn!!
       public Patient LoadPatientCPR(string CPR)
       {
          sql = "Select * from dbo.EKGPatient where CPR = '" +  CPR + "'";
@@ -326,11 +329,43 @@ namespace Data
             {
                 return null;
             }
-            
                   
-      }
+        }
 
+        public void gemIOffentligDataBase (int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_beskrivelse, string borger_cprnr)
+        {
+            try
+            {
+                connectionOff.Open();
 
-   }
+                string insertStringParam = @"INSERT INTO dbo.EKGMAELING (ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_beskrivelse, borger_cprnr) 
+                                      VALUES(@ekgmaaleid, @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_beskrivelse, @borger_cprnr)";
+
+                using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
+                {
+                    cmdOff.Parameters.AddWithValue("@ekgmaaleid", ekgmaaleid);
+                    cmdOff.Parameters.AddWithValue("@dato", dato);
+                    cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
+                    cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
+                    cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
+                    cmdOff.Parameters.AddWithValue("@sfp_ansvmedarbjnr", sfp_ansvmedarbjnr);
+                    cmdOff.Parameters.AddWithValue("@sfp_ans_org", sfp_ans_org);
+                    cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
+                    cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
+                    cmdOff.Parameters.AddWithValue("@borger_efternavn", borger_efternavn);
+                    cmdOff.Parameters.AddWithValue("@borger_beskrivelse", borger_beskrivelse);
+                    cmdOff.Parameters.AddWithValue("@borger_cprnr", borger_cprnr);
+                    cmdOff.ExecuteReader();
+                }
+
+                connectionOff.Close();
+
+                
+            }
+            catch 
+            { }  
+        }
+
+    }
 }
 

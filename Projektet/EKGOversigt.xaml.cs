@@ -33,9 +33,10 @@ namespace Projektet
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            logicref.getPatientListe();
+            PatientListe = logicref.getPatientListe();
             foreach (Patient item in PatientListe)
             {
+                
                 PatientLB.Items.Add(item.Navn); //HJÆLP!
             }
 
@@ -46,15 +47,17 @@ namespace Projektet
 
         private void GemB_Click(object sender, RoutedEventArgs e)
         {
+            logicref.gemIoffentligDatabase("", Convert.ToDateTime(DatoLB.SelectedItem), "", fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
             //uploadet alle informationer til EGKmålinger og EKGData (offentlige)
         }
 
-        // eventhandler for et item er valgt i patientLB
+        
 
 
         private void PatientLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            logicref.getMaalingListe();
+            //cpr, patient beskrivelse vises.
+            MaalingListe = logicref.getMaalingListe(PatCprTB.Text);
             foreach (EKG_Maaling item in MaalingListe)
             {
                 DatoLB.Items.Add(item.DateTime);
@@ -64,7 +67,7 @@ namespace Projektet
         
         private void DatoLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // EKG-målingen, cpr, patient beskrivelse vises.
+            // EKG-målingen vises.
         }
 
     }

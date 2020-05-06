@@ -19,7 +19,7 @@
         <TextBox x:Name="FødselsdagTB" HorizontalAlignment="Left" Height="23" Margin="150,198,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="121" FontFamily="Times New Roman" FontSize="14"/>
         <TextBox x:Name="EfterNavnTB" HorizontalAlignment="Left" Height="23" Margin="150,158,0,0" TextWrapping="Wrap" Text="Efternavn" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" FontSize="14"/>
         <TextBox x:Name="NavnTB" HorizontalAlignment="Left" Height="23" Margin="150,125,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" FontSize="14"/>
-        <ListBox x:Name="EKGmåler" HorizontalAlignment="Left" Height="32" Margin="150,241,0,0" VerticalAlignment="Top" Width="139" Loaded="EKGmåler_Loaded"/>
+        <ListBox x:Name="EKGmålerId" HorizontalAlignment="Left" Height="32" Margin="150,241,0,0" VerticalAlignment="Top" Width="139" Loaded="EKGmåler_Loaded"/>
         <Button x:Name="UdlånB" Content="Udlån" HorizontalAlignment="Left" Margin="203,306,0,0" VerticalAlignment="Top" Width="85" FontFamily="Times New Roman" FontSize="14" Height="35" RenderTransformOrigin="-0.594,0.267" FontWeight="Bold" Background="#FF4395EE" Click="UdlånB_Click"/>
         <Button x:Name="AnnullerB" Content="Annuller" HorizontalAlignment="Left" Margin="76,306,0,0" VerticalAlignment="Top" Width="85" FontFamily="Times New Roman" FontSize="14" Height="35" RenderTransformOrigin="-0.711,0.485" FontWeight="Bold" Background="#FF4395EE" Click="AnnullerB_Click"/>
 

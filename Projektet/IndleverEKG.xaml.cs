@@ -44,9 +44,9 @@ namespace Projektet
 
         private void HentinfoB_Click(object sender, RoutedEventArgs e)
         {
-            patient = logicref.getCPR();
+            patient = logicref.getPatientinfo(Convert.ToInt32(IDTB.Text));
 
-            InfoTB.Text = patient.Navn + " " + patient.Efternavn;
+            InfoTB.Text = patient.EKGID + patient.Navn + " " + patient.Efternavn;
         }
 
         private void IndleverB_Click(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace Projektet
                 case MessageBoxResult.Yes:
 
                     MessageBox.Show("EKG-Måler med EKGID'et" + patient.EKGID + "er hermed indleveret");
-                    logicref.indleverEkgMåler();
+                    logicref.indleverEkgMåler(patient.CPR, patient.EKGID);
 
                     break;
 

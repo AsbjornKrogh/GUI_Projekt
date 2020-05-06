@@ -28,24 +28,24 @@ namespace LogicLayer
             return DBDataAccess.EKGMålere();
         }
 
-        public byte getudlånBesked()
+        public byte getudlånBesked(string cpr, string navn, string efternavn, int ekgid)
         {
-            return DBDataAccess.UdlaanTilPatient(person.CPR, person.Navn, person.Efternavn, person.EKGID);
+            return DBDataAccess.UdlaanTilPatient(cpr, navn, efternavn, ekgid);
         }
 
-        public Patient getCPR()
+        public Patient getCPR(string cpr)
         {
-            return DBDataAccess.LoadPatientCPR(person.CPR);
+            return DBDataAccess.LoadPatientCPR(cpr);
         }
 
-        public Patient getPatientinfo()
+        public Patient getPatientinfo(int ekgid)
         {
-            return DBDataAccess.LoadPatient(person.EKGID);
+            return DBDataAccess.LoadPatient(ekgid);
         }
         
-        public void indleverEkgMåler()
+        public void indleverEkgMåler(string cpr, int ekgid)
         {
-            DBDataAccess.IndleverEKG(person.CPR, person.EKGID);
+            DBDataAccess.IndleverEKG(cpr, ekgid);
         }
 
         public List<Patient> getPatientListe()
@@ -53,9 +53,14 @@ namespace LogicLayer
             return DBDataAccess.LoadAllPatient();
         }
 
-        public List<EKG_Maaling> getMaalingListe()
+        public List<EKG_Maaling> getMaalingListe(string cpr)
         {
-            return DBDataAccess.LoadAllMålinger(person.CPR);
+            return DBDataAccess.LoadAllMålinger(cpr);
+        }
+
+        public void gemIoffentligDatabase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_beskrivelse, string borger_cprnr)
+        {
+            DBDataAccess.gemIOffentligDataBase(ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_beskrivelse, borger_cprnr);
         }
 
 

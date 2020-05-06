@@ -28,7 +28,7 @@
         <TextBox x:Name="PatientInfoTB" HorizontalAlignment="Left" Height="114" Margin="182,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontFamily="Times New Roman"/>
         <Label Content="Patient beskrivelse:" HorizontalAlignment="Left" Margin="185,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.07,0.103" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
         <Label Content="Orgination" HorizontalAlignment="Left" Margin="17,61,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="96,63,0,0" TextWrapping="Wrap" Text="Århus lægepraksis" VerticalAlignment="Top" Width="120" IsEnabled="False" FontFamily="Times New Roman"/>
+        <TextBox x:Name="orgTB" HorizontalAlignment="Left" Height="24" Margin="96,63,0,0" TextWrapping="Wrap" Text="Århus lægepraksis" VerticalAlignment="Top" Width="120" IsEnabled="False" FontFamily="Times New Roman"/>
         <Label Content="Oversigt over EKG-Målinger" HorizontalAlignment="Left" Margin="43,22,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF0D4AC8"/>
     </Grid>
 </Window>
