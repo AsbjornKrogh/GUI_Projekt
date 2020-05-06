@@ -11,6 +11,7 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
+      
       //Atributter og objetkter 
       //Connectionsstrings til Lokal og Offentlig Database. 
       private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
@@ -143,20 +144,14 @@ namespace Data
          try
          {
             connection.Open();
-
             command = new SqlCommand(sql, connection);
-
             dataReader = command.ExecuteReader();
-
             while (dataReader.Read())
             {
                MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"])));
             }
-
             dataReader.Close();
-
             command.Dispose();
-
             connection.Close();
 
             return MaalingListe;
