@@ -26,7 +26,7 @@ namespace Projektet
         MainWindow Main;
         SqlDBDataAccess DBDataAccess;
 
-        private Patient patient;
+        private Patient indleverpatient;
         private Logic logicref;
 
         
@@ -44,20 +44,20 @@ namespace Projektet
 
         private void HentinfoB_Click(object sender, RoutedEventArgs e)
         {
-            patient = logicref.getPatientinfo(Convert.ToInt32(IDTB.Text));
+            indleverpatient = logicref.getPatientinfo(Convert.ToInt32(IDTB.Text));
 
-            InfoTB.Text = patient.EKGID + patient.Navn + " " + patient.Efternavn;
+            InfoTB.Text = indleverpatient.EKGID + "         " + indleverpatient.Navn + " " + indleverpatient.Efternavn;
         }
 
         private void IndleverB_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra" + patient.Navn + patient.Efternavn + "med tilhørende EKDID:" + patient.EKGID + "?","Advarsel", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra" + indleverpatient.Navn + indleverpatient.Efternavn + "med tilhørende EKDID:" + indleverpatient.EKGID + "?","Advarsel", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
 
-                    MessageBox.Show("EKG-Måler med EKGID'et" + patient.EKGID + "er hermed indleveret");
-                    logicref.indleverEkgMåler(patient.CPR, patient.EKGID);
+                    MessageBox.Show("EKG-Måler med EKGID'et" + indleverpatient.EKGID + "er hermed indleveret");
+                    logicref.indleverEkgMåler(indleverpatient.CPR, indleverpatient.EKGID);
 
                     break;
 
