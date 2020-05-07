@@ -139,7 +139,7 @@ namespace Data
       {
          MaalingListe = new List<EKG_Maaling>();
 
-         sql = "Select CPR,tidsstempel from dbo.EKGData Where CPR = '" + CPR + "'";
+         sql = "Select CPR,tidsstempel,id from dbo.EKGData Where CPR = '" + CPR + "'";
 
          try
          {
@@ -148,7 +148,7 @@ namespace Data
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
-               MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"])));
+               MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"]), Convert.ToInt32(dataReader["id"])));
             }
             dataReader.Close();
             command.Dispose();
@@ -230,7 +230,7 @@ namespace Data
       }
 
       //Henter 1 patient fra DB, hvor EKGID'et stemmer overens (Bruges i Indlever vinduet) 
-      // Sprøg Asbjørn!!
+      
       public Patient LoadPatientCPR(string CPR)
       {
          sql = "Select * from dbo.EKGPatient where CPR = '" +  CPR + "'";
@@ -297,7 +297,7 @@ namespace Data
         {
             MaalingListe = new List<EKG_Maaling>();
 
-            sql = "Select CPR, tidsstempel from dbo.EKGData Where tidstempel = '" + CPR + "'";
+            sql = "Select CPR, tidsstempel, id from dbo.EKGData Where tidstempel = '" + CPR + "'";
 
             try
             {
@@ -309,7 +309,7 @@ namespace Data
 
                 while (dataReader.Read())
                 {
-                    MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"])));
+                    MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"]), Convert.ToInt32(dataReader["id"])));
                 }
 
                 dataReader.Close();

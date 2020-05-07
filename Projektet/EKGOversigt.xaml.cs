@@ -25,6 +25,7 @@ namespace Projektet
         private List<Patient> PatientListe;
         private Logic logicref;
         private List<EKG_Maaling> MaalingListe;
+        private Patient patient1;
         public EKGOversigt(Logic logicref)
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace Projektet
             foreach (Patient item in PatientListe)
             {
                 
-                PatientLB.Items.Add(item.Navn); //HJÆLP!
+                PatientLB.Items.Add(item.Navn + " " + item.Efternavn); 
             }
 
             fnTB.Text = "Søren";
@@ -47,7 +48,20 @@ namespace Projektet
 
         private void GemB_Click(object sender, RoutedEventArgs e)
         {
-            logicref.gemIoffentligDatabase("", Convert.ToDateTime(DatoLB.SelectedItem), "", fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
+            MaalingListe = logicref.getMaalingListe(PatCprTB.Text);
+            patient1 = logicref.getCPR(PatCprTB.Text);
+            int ekgmaaleid;
+            int antalmaalinger = 0;
+            foreach (EKG_Maaling item in MaalingListe)
+            {
+                antalmaalinger++;
+                if (Convert.ToDateTime(DatoLB.SelectedItem) == item.DateTime)
+                {
+                    ekgmaaleid = item.id;
+                    logicref.gemIoffentligDatabase(ekgmaaleid, Convert.ToDateTime(DatoLB.SelectedItem), antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, patient1.Navn, patient1.Efternavn, PatientInfoTB.Text, PatCprTB.Text);
+                }
+            }
+            //logicref.gemIoffentligDatabase(ekgmaaleid, Convert.ToDateTime(DatoLB.SelectedItem), "", fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
             //uploadet alle informationer til EGKmålinger og EKGData (offentlige)
         }
 
@@ -56,12 +70,20 @@ namespace Projektet
 
         private void PatientLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //cpr, patient beskrivelse vises.
+            foreach (Patient item in PatientListe)
+            {
+                if (Convert.ToString(PatientLB.SelectedItem) == item.Navn + " " + item.Efternavn)
+                {
+                    PatCprTB.Text = item.CPR;
+                }
+            }
+
             MaalingListe = logicref.getMaalingListe(PatCprTB.Text);
             foreach (EKG_Maaling item in MaalingListe)
             {
                 DatoLB.Items.Add(item.DateTime);
             }
+            
         }
 
         
