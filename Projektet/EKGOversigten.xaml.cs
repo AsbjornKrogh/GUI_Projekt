@@ -29,7 +29,7 @@ namespace Projektet_GUI
         private Logic logicref;
         private List<EKG_Maaling> MaalingListe;
         private Patient patient1;
-        public EKGOversigt(Logic logicref)
+        public EKGOversigten(Logic logicref)
         {
             InitializeComponent();
             this.logicref = logicref;
