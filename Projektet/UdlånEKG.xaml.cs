@@ -44,7 +44,7 @@ namespace Projektet
 
         private void Udlån_Loaded(object sender, RoutedEventArgs e)
         {
-            logicref.getEKGMålere();
+            EKGmaalereListe = logicref.getEKGMålere();
             foreach (EKG item in EKGmaalereListe)
             {
                 if (item.Availiable == true)

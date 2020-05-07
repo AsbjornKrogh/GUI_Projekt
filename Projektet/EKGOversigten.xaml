@@ -14,8 +14,8 @@
         
         <Label Content="Patient" HorizontalAlignment="Left" Margin="19,211,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.772,-0.083" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
         <Label Content="Dato" HorizontalAlignment="Left" Margin="22,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.772,-0.083" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
-        <ListBox x:Name="PatientLB" HorizontalAlignment="Left" Height="66" Margin="19,236,0,0" VerticalAlignment="Top" Width="98" SelectionChanged="PatientLB_SelectionChanged" FontFamily="Times New Roman"/>
-        <ListBox x:Name="DatoLB" HorizontalAlignment="Left" Height="45" Margin="15,338,0,0" VerticalAlignment="Top" Width="98" SelectionChanged="DatoLB_SelectionChanged" FontFamily="Times New Roman"/>
+        <ListBox x:Name="PatientLB" HorizontalAlignment="Left" Height="66" Margin="19,236,0,0" VerticalAlignment="Top" Width="147" SelectionChanged="PatientLB_SelectionChanged" FontFamily="Times New Roman"/>
+        <ListBox x:Name="DatoLB" HorizontalAlignment="Left" Height="45" Margin="15,338,0,0" VerticalAlignment="Top" Width="151" SelectionChanged="DatoLB_SelectionChanged" FontFamily="Times New Roman"/>
         <Label Content="Kommentar" HorizontalAlignment="Left" Margin="18,381,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
         <TextBox x:Name="KommentarTB" HorizontalAlignment="Left" Height="45" Margin="17,412,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.525,0.17" FontFamily="Times New Roman"/>
         <Button x:Name="GemB" Content="Gem" HorizontalAlignment="Left" Margin="190,420,0,0" VerticalAlignment="Top" Width="90" Click="GemB_Click" BorderBrush="#FF4395EE" Background="#FF4395EE" FontFamily="Times New Roman" Height="27" Foreground="#FF0D4AC8" FontWeight="Bold"/>
