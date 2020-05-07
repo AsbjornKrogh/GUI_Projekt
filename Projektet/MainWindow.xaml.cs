@@ -14,10 +14,7 @@ namespace Projektet_GUI
    {
       UdlånEKG Udlån;
       IndleverEKG Indlever;
-        Logic logicobj;
-
-
-     
+      Logic logicobj;
 
       public MainWindow()
       {

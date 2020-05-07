@@ -12,20 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Data;
+using LiveCharts;
+using LiveCharts.Wpf;
 using DTO;
 using LogicLayer;
 
-namespace Projektet
+namespace Projektet_GUI
 {
     /// <summary>
-    /// Interaction logic for EKGOversigt.xaml
+    /// Interaction logic for EKGOversigten.xaml
     /// </summary>
-    public partial class EKGOversigt : Window
+   
+    public partial class EKGOversigten : Window
     {
         private List<Patient> PatientListe;
         private Logic logicref;
         private List<EKG_Maaling> MaalingListe;
-        public EKGOversigt(Logic logicref)
+
+        public EKGOversigten(Logic logicref)
         {
             InitializeComponent();
             this.logicref = logicref;
@@ -47,7 +51,7 @@ namespace Projektet
 
         private void GemB_Click(object sender, RoutedEventArgs e)
         {
-            logicref.gemIoffentligDatabase("", Convert.ToDateTime(DatoLB.SelectedItem), "", fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
+            //logicref.gemIoffentligDatabase("", Convert.ToDateTime(DatoLB.SelectedItem), "", fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
             //uploadet alle informationer til EGKmålinger og EKGData (offentlige)
         }
 

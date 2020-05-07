@@ -293,7 +293,7 @@ namespace Data
 
         //Ikke inplementeret
         //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
-        public EKG_Maaling LoadEKGMaaling()
+        public List<EKG_Maaling> LoadEKGMaaling(string CPR)
         {
             MaalingListe = new List<EKG_Maaling>();
 

@@ -51,7 +51,7 @@ namespace Projektet
 
         private void IndleverB_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra" + patient.Navn + patient.Efternavn + "med tilhørende EKDID:" + patient.EKGID + "?", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra" + patient.Navn + patient.Efternavn + "med tilhørende EKDID:" + patient.EKGID + "?","Advarsel", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
