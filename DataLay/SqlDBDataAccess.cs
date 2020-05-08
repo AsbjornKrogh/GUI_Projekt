@@ -11,7 +11,7 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
-      
+
       //Atributter og objetkter 
       //Connectionsstrings til Lokal og Offentlig Database. 
       private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
@@ -28,6 +28,7 @@ namespace Data
       private List<Patient> PatientListe;
       private List<EKG_Maaling> MaalingListe;
       private List<EKG> EKGmaalereListe;
+      private List<double> Maalepunkter; 
 
       private Patient IndleverPatient;
       private EKG_Maaling EKGMaaling;
@@ -230,10 +231,10 @@ namespace Data
       }
 
       //Henter 1 patient fra DB, hvor EKGID'et stemmer overens (Bruges i Indlever vinduet) 
-      
+
       public Patient LoadPatientCPR(string CPR)
       {
-         sql = "Select * from dbo.EKGPatient where CPR = '" +  CPR + "'";
+         sql = "Select * from dbo.EKGPatient where CPR = '" + CPR + "'";
 
          try
          {
@@ -268,7 +269,7 @@ namespace Data
       {
          string insertStringParam = @"UPDATE dbo.EKGPatient SET EKGID = null WHERE CPR = '" + CPR + "'";
 
-         connection.Open(); 
+         connection.Open();
 
          using (SqlCommand cmd = new SqlCommand(insertStringParam, connection))
          {
@@ -289,78 +290,74 @@ namespace Data
       }
 
 
+      //Ikke inplementeret
+      //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
+      public EKG_Maaling LoadEKGMaaling(string CPR)
+      {
+         connection.Open();
+
+         byte[] bytesArray = new byte[10000000];
+         double[] tal;
+         Maalepunkter = new List<double>(); 
+
+         sql = "Select EKGData from dbo.EKGData Where CPR = '" + CPR + "'";
+
+         using (command = new SqlCommand(sql, connection))
+         {
+            dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+               bytesArray = (byte[])dataReader["Auto"];
+            tal = new double[bytesArray.Length / 8];
+
+            for (int i = 0, j = 0; i < bytesArray.Length; i += 4, j++)
+               Maalepunkter.Add(BitConverter.ToInt32(bytesArray, i));
+
+            EKGMaaling.EKG_Data = Maalepunkter; 
+           
+         }
+
+         connection.Close();
+
+         return EKGMaaling; 
+      }
 
 
-        //Ikke inplementeret
-        //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
-        public List<EKG_Maaling> LoadEKGMaaling(string CPR)
-        {
-            MaalingListe = new List<EKG_Maaling>();
 
-            sql = "Select CPR, tidsstempel, id from dbo.EKGData Where tidstempel = '" + CPR + "'";
 
-            try
-            {
-                connection.Open();
+      public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_beskrivelse, string borger_cprnr)
+      {
+         try
+         {
+            connectionOff.Open();
 
-                command = new SqlCommand(sql, connection);
-
-                dataReader = command.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    MaalingListe.Add(new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"]), Convert.ToInt32(dataReader["id"])));
-                }
-
-                dataReader.Close();
-
-                command.Dispose();
-
-                connection.Close();
-
-                return MaalingListe;
-            }
-            catch
-            {
-                return null;
-            }
-                  
-        }
-
-        public void gemIOffentligDataBase (int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_beskrivelse, string borger_cprnr)
-        {
-            try
-            {
-                connectionOff.Open();
-
-                string insertStringParam = @"INSERT INTO dbo.EKGMAELING (ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_beskrivelse, borger_cprnr) 
+            string insertStringParam = @"INSERT INTO dbo.EKGMAELING (ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_beskrivelse, borger_cprnr) 
                                       VALUES(@ekgmaaleid, @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_beskrivelse, @borger_cprnr)";
 
-                using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
-                {
-                    cmdOff.Parameters.AddWithValue("@ekgmaaleid", ekgmaaleid);
-                    cmdOff.Parameters.AddWithValue("@dato", dato);
-                    cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
-                    cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
-                    cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
-                    cmdOff.Parameters.AddWithValue("@sfp_ansvmedarbjnr", sfp_ansvmedarbjnr);
-                    cmdOff.Parameters.AddWithValue("@sfp_ans_org", sfp_ans_org);
-                    cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
-                    cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
-                    cmdOff.Parameters.AddWithValue("@borger_efternavn", borger_efternavn);
-                    cmdOff.Parameters.AddWithValue("@borger_beskrivelse", borger_beskrivelse);
-                    cmdOff.Parameters.AddWithValue("@borger_cprnr", borger_cprnr);
-                    cmdOff.ExecuteReader();
-                }
-
-                connectionOff.Close();
-
-                
+            using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
+            {
+               cmdOff.Parameters.AddWithValue("@ekgmaaleid", ekgmaaleid);
+               cmdOff.Parameters.AddWithValue("@dato", dato);
+               cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
+               cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
+               cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
+               cmdOff.Parameters.AddWithValue("@sfp_ansvmedarbjnr", sfp_ansvmedarbjnr);
+               cmdOff.Parameters.AddWithValue("@sfp_ans_org", sfp_ans_org);
+               cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
+               cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
+               cmdOff.Parameters.AddWithValue("@borger_efternavn", borger_efternavn);
+               cmdOff.Parameters.AddWithValue("@borger_beskrivelse", borger_beskrivelse);
+               cmdOff.Parameters.AddWithValue("@borger_cprnr", borger_cprnr);
+               cmdOff.ExecuteReader();
             }
-            catch 
-            { }  
-        }
 
-    }
+            connectionOff.Close();
+
+
+         }
+         catch
+         { }
+      }
+
+   }
 }
 

@@ -6,33 +6,29 @@
         xmlns:local="clr-namespace:Projektet_GUI"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="EKGOversigt" Height="509" Width="1081.634" Loaded="Window_Loaded" Background="#FFB3D7FF">
-    <Grid Margin="0,0,-0.333,2.333">
+        Title="EKGOversigt" Height="550" Width="1027.634" Loaded="Window_Loaded" Background="#FFB3D7FF">
+    <Grid>
         <lvc:CartesianChart Series="{Binding Path=MyCollection}" HorizontalAlignment="Right" Margin="0,0,0,-0.667" Width="703" >
-            <lvc:CartesianChart.AxisX>
-                <lvc:AxesCollection>
-                </lvc:AxesCollection>
-</lvc:CartesianChart.AxisX>
-        </lvc:CartesianChart>
 
-        <Label Content="Patientoversigt" HorizontalAlignment="Left" Margin="13,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.772,-0.083" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
-        <Label Content="Dato for måling" HorizontalAlignment="Left" Margin="211,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.772,-0.083" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
-        <ListBox x:Name="PatientLB" HorizontalAlignment="Left" Height="97" Margin="13,61,0,0" VerticalAlignment="Top" Width="170" SelectionChanged="PatientLB_SelectionChanged" FontFamily="Times New Roman"/>
-        <ListBox x:Name="DatoLB" HorizontalAlignment="Left" Height="96" Margin="213,62,0,0" VerticalAlignment="Top" Width="136" SelectionChanged="DatoLB_SelectionChanged" FontFamily="Times New Roman"/>
-        <Label Content="Kommentar" HorizontalAlignment="Left" Margin="5,335,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBox x:Name="KommentarTB" HorizontalAlignment="Left" Height="80" Margin="102,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.525,0.17" FontFamily="Times New Roman" FontSize="14"/>
-        <Button x:Name="GemB" Content="Gem" HorizontalAlignment="Left" Margin="102,420,0,0" VerticalAlignment="Top" Width="120" Click="GemB_Click" BorderBrush="#FF4395EE" Background="#FF4395EE" FontFamily="Times New Roman" Height="46" Foreground="#FF0D4AC8" FontWeight="Bold"/>
-        <Label Content="Ansvarlig" HorizontalAlignment="Left" Margin="5,211,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBox x:Name="fnTB" HorizontalAlignment="Left" Height="24" Margin="102,215,0,0" TextWrapping="Wrap" Text="Fornavn" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" RenderTransformOrigin="0.523,1.431" FontSize="14"/>
-        <TextBox x:Name="EfTB" HorizontalAlignment="Left" Height="24" Margin="224,215,0,0" TextWrapping="Wrap" Text="Efternavn" VerticalAlignment="Top" Width="107" FontFamily="Times New Roman" RenderTransformOrigin="0.536,1.542" FontSize="14"/>
-        <Label Content="Patient CPR" HorizontalAlignment="Left" Margin="5,285,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBox x:Name="PatCprTB" HorizontalAlignment="Left" Height="24" Margin="102,285,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" RenderTransformOrigin="0.424,-1.125" FontSize="14"/>
-        <TextBox x:Name="MedarnrTB" HorizontalAlignment="Left" Height="23" Margin="102,248,0,0" TextWrapping="Wrap" Text="Medarbejder nr." VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBox x:Name="PatientInfoTB" HorizontalAlignment="Left" Height="80" Margin="249,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontFamily="Times New Roman" FontSize="14"/>
-        <Label Content="Patient beskrivelse:" HorizontalAlignment="Left" Margin="246,306,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.07,0.103" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
-        <Label Content="Orgination" HorizontalAlignment="Left" Margin="5,172,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBox x:Name="orgTB" HorizontalAlignment="Left" Height="24" Margin="102,174,0,0" TextWrapping="Wrap" Text="Århus lægepraksis" VerticalAlignment="Top" Width="120" IsEnabled="False" FontFamily="Times New Roman" FontSize="14"/>
-        <Label Content="Oversigt over EKG-Målinger" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF0D4AC8"/>
-        <Label x:Name="medarbNrL" Content="Medarbejder nr." HorizontalAlignment="Left" Margin="5,244,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" Width="99" FontSize="14"/>
+        </lvc:CartesianChart>
+        
+        <Label Content="Patient" HorizontalAlignment="Left" Margin="19,211,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.772,-0.083" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
+        <Label Content="Dato" HorizontalAlignment="Left" Margin="22,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.772,-0.083" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
+        <ListBox x:Name="PatientLB" HorizontalAlignment="Left" Height="66" Margin="19,236,0,0" VerticalAlignment="Top" Width="147" SelectionChanged="PatientLB_SelectionChanged" FontFamily="Times New Roman"/>
+        <ListBox x:Name="DatoLB" HorizontalAlignment="Left" Height="45" Margin="15,338,0,0" VerticalAlignment="Top" Width="151" SelectionChanged="DatoLB_SelectionChanged" FontFamily="Times New Roman"/>
+        <Label Content="Kommentar" HorizontalAlignment="Left" Margin="18,381,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
+        <TextBox x:Name="KommentarTB" HorizontalAlignment="Left" Height="45" Margin="17,412,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.525,0.17" FontFamily="Times New Roman"/>
+        <Button x:Name="GemB" Content="Gem" HorizontalAlignment="Left" Margin="190,420,0,0" VerticalAlignment="Top" Width="90" Click="GemB_Click" BorderBrush="#FF4395EE" Background="#FF4395EE" FontFamily="Times New Roman" Height="27" Foreground="#FF0D4AC8" FontWeight="Bold"/>
+        <Label Content="Ansvarlig" HorizontalAlignment="Left" Margin="20,107,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
+        <TextBox x:Name="fnTB" HorizontalAlignment="Left" Height="24" Margin="92,108,0,0" TextWrapping="Wrap" Text="Fornavn" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" RenderTransformOrigin="0.523,1.431"/>
+        <TextBox x:Name="EfTB" HorizontalAlignment="Left" Height="24" Margin="180,109,0,0" TextWrapping="Wrap" Text="Efternavn" VerticalAlignment="Top" Width="107" FontFamily="Times New Roman" RenderTransformOrigin="0.536,1.542"/>
+        <Label Content="Patient CPR" HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
+        <TextBox x:Name="PatCprTB" HorizontalAlignment="Left" Height="20" Margin="98,187,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="83" FontFamily="Times New Roman"/>
+        <TextBox x:Name="MedarnrTB" HorizontalAlignment="Left" Height="23" Margin="91,146,0,0" TextWrapping="Wrap" Text="Medarbejder nr." VerticalAlignment="Top" Width="120" FontFamily="Times New Roman"/>
+        <TextBox x:Name="PatientInfoTB" HorizontalAlignment="Left" Height="114" Margin="182,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" FontFamily="Times New Roman"/>
+        <Label Content="Patient beskrivelse:" HorizontalAlignment="Left" Margin="185,216,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.07,0.103" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
+        <Label Content="Orgination" HorizontalAlignment="Left" Margin="17,61,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman"/>
+        <TextBox x:Name="orgTB" HorizontalAlignment="Left" Height="24" Margin="96,63,0,0" TextWrapping="Wrap" Text="Århus lægepraksis" VerticalAlignment="Top" Width="120" IsEnabled="False" FontFamily="Times New Roman"/>
+        <Label Content="Oversigt over EKG-Målinger" HorizontalAlignment="Left" Margin="43,22,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF0D4AC8"/>
     </Grid>
 </Window>
