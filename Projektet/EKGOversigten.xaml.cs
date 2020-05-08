@@ -95,10 +95,11 @@ namespace Projektet_GUI
       {
          foreach (EKG_Maaling item in MaalingListe)
          {
-            if (item.DateTime == Convert.ToDateTime(DatoLB.SelectedItem)  
+            if (item.DateTime == Convert.ToDateTime(DatoLB.SelectedItem))
+               logicref.sygdomsalgoritme_Måling(item.CPR);
          }
 
-        }
+      }
 
    }
 

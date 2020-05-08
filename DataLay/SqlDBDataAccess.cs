@@ -6,6 +6,7 @@ using System.Threading;
 using DTO;
 using Data;
 using System.Linq.Expressions;
+using System.Linq;
 
 namespace Data
 {
@@ -295,33 +296,30 @@ namespace Data
       public EKG_Maaling LoadEKGMaaling(string CPR)
       {
          connection.Open();
-
-         byte[] bytesArray = new byte[10000000];
+         byte[] bytesArray = new byte[2000000];
          double[] tal;
-         Maalepunkter = new List<double>(); 
 
-         sql = "Select EKGData from dbo.EKGData Where CPR = '" + CPR + "'";
+         sql = "Select EKG_Data, CPR, tidsstempel, id from dbo.EKGData Where CPR = '" + CPR + "'";
 
          using (command = new SqlCommand(sql, connection))
          {
             dataReader = command.ExecuteReader();
             if (dataReader.Read())
-               bytesArray = (byte[])dataReader["Auto"];
-            tal = new double[bytesArray.Length / 8];
+            {
+               bytesArray = (byte[])dataReader["EKG_Data"];
+               tal = new double[bytesArray.Length / 8];
 
-            for (int i = 0, j = 0; i < bytesArray.Length; i += 4, j++)
-               Maalepunkter.Add(BitConverter.ToInt32(bytesArray, i));
+               for (int i = 0, j = 0; i < bytesArray.Length; i += 8, j++)
+                  Maalepunkter.Add(BitConverter.ToDouble(bytesArray, i));
 
-            EKGMaaling.EKG_Data = Maalepunkter; 
-           
+               EKGMaaling = new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Convert.ToDateTime(dataReader["tidsstempel"]), Maalepunkter, Convert.ToInt32(dataReader["id"]), false);
+            }
          }
 
          connection.Close();
 
          return EKGMaaling; 
       }
-
-
 
 
       public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_beskrivelse, string borger_cprnr)
