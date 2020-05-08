@@ -14,6 +14,7 @@ namespace Projektet_GUI
    {
       UdlånEKG Udlån;
       IndleverEKG Indlever;
+        EKGOversigten EKGw;
       Logic logicobj;
 
       public MainWindow()
@@ -31,7 +32,8 @@ namespace Projektet_GUI
 
       private void PatintovM_Click(object sender, RoutedEventArgs e)
       {
-
+            EKGw = new EKGOversigten(logicobj);
+            EKGw.ShowDialog();
       }
 
       private void IndleverEkgM_Click_1(object sender, RoutedEventArgs e)
