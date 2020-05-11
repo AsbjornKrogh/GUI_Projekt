@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Data;
 using LiveCharts;
 using LiveCharts.Wpf;
 using DTO;
@@ -108,8 +107,7 @@ namespace Projektet_GUI
                 ekgvalues.Add(item);
          }
 
-         //Dette er en bool alt efter om der er dedekteret sygdom eller ej - skriv eller ring hvis i mangler noget :D 
-         Maaling.Sygdom 
+            //Dette er en bool alt efter om der er dedekteret sygdom eller ej - skriv eller ring hvis i mangler noget :D 
 
 
          //Kode for at få et ekg op på charen  
