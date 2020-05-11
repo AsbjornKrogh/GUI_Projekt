@@ -13,8 +13,6 @@ namespace LogicLayer
 
    public class Logic
    {
-
-
       SqlDBDataAccess DBDataAccess;
 
       private Patient patient;
@@ -65,7 +63,7 @@ namespace LogicLayer
          DBDataAccess.gemIOffentligDataBase(ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_beskrivelse, borger_cprnr);
       }
 
-      public EKG_Maaling sygdomsalgoritme_Måling(string cpr)
+      public EKG_Maaling sygdomsalgoritme_Måling(string cpr, DateTime time)
       {
          //Opjekter og atributter til udregnelse af sygdom. 
          int Tæller = 1;
@@ -78,7 +76,7 @@ namespace LogicLayer
 
          int[] RTList = new int[20];
 
-         EKGmaaling = DBDataAccess.LoadEKGMaaling(cpr);
+         EKGmaaling = DBDataAccess.LoadEKGMaaling(cpr, time);
 
          foreach (double item in EKGmaaling.EKG_Data)
          {
@@ -94,16 +92,21 @@ namespace LogicLayer
 
             Tæller++; 
          }
-
-         for (int i = 0; i < RTList.Length; i++)
+         try
          {
-            diff = RTList[i + 1] - RTList[i];
+            for (int i = 0; i < RTList.Length; i++)
+            {
+               diff = RTList[i + 1] - RTList[i];
 
-            if (diff > 30) //30 er udvalgt, da vi sampler med 
-               EKGmaaling.Sygdom = true; 
+               if (diff > 30) //30 er udvalgt, da vi sampler med 
+                  EKGmaaling.Sygdom = true;
+            }
          }
-            
-         return EKGmaaling; 
+         catch
+         {
+         return EKGmaaling;
+         }
+      return EKGmaaling;
       }
 
 

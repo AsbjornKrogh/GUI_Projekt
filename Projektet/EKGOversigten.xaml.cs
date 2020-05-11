@@ -28,6 +28,7 @@ namespace Projektet_GUI
       private List<Patient> PatientListe;
       private Logic logicref;
       private List<EKG_Maaling> MaalingListe;
+      private EKG_Maaling Maaling;
       private Patient patient1;
 
       public EKGOversigten(Logic logicref)
@@ -69,9 +70,6 @@ namespace Projektet_GUI
          //uploadet alle informationer til EGKmålinger og EKGData (offentlige)
       }
 
-
-
-
       private void PatientLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
       {
          foreach (Patient item in PatientListe)
@@ -96,8 +94,20 @@ namespace Projektet_GUI
          foreach (EKG_Maaling item in MaalingListe)
          {
             if (item.DateTime == Convert.ToDateTime(DatoLB.SelectedItem))
-               logicref.sygdomsalgoritme_Måling(item.CPR);
+               Maaling = logicref.sygdomsalgoritme_Måling(item.CPR, item.DateTime);
          }
+
+         //Kode for at få et ekg op på charen - Det under fungere ikke - i skal selv implementere charen  
+         foreach (double item in Maaling.EKG_Data)
+         { 
+         Line.valule.add(item)
+         }
+
+         //Dette er en bool alt efter om der er dedekteret sygdom eller ej - skriv eller ring hvis i mangler noget :D 
+         Maaling.Sygdom 
+
+
+         //Kode for at få et ekg op på charen  
 
       }
 

@@ -293,13 +293,15 @@ namespace Data
 
       //Ikke inplementeret
       //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
-      public EKG_Maaling LoadEKGMaaling(string CPR)
+      public EKG_Maaling LoadEKGMaaling(string CPR, DateTime Time)
       {
+         Maalepunkter = new List<double>(); 
          connection.Open();
-         byte[] bytesArray = new byte[2000000];
+
+         byte[] bytesArray; 
          double[] tal;
 
-         sql = "Select EKG_Data, CPR, tidsstempel, id from dbo.EKGData Where CPR = '" + CPR + "'";
+         sql = "Select EKG_Data, CPR, tidsstempel, id from dbo.EKGData Where tidsstempel = '" + Time.Year + "-" + Time.Month + "-" + Time.Day + " " + Time.Hour + ":" + Time.Minute + ":" + Time.Second + ".0" + Time.Millisecond + "'"; 
 
          using (command = new SqlCommand(sql, connection))
          {
