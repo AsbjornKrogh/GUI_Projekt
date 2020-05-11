@@ -108,9 +108,6 @@ namespace LogicLayer
          }
       return EKGmaaling;
       }
-
-
-
    }
 
 

@@ -97,10 +97,15 @@ namespace Projektet_GUI
                Maaling = logicref.sygdomsalgoritme_Måling(item.CPR, item.DateTime);
          }
 
+            SeriesCollection ekgcollection = new SeriesCollection();
+            ChartValues<double> ekgvalues = new ChartValues<double>();
+
+            
+
          //Kode for at få et ekg op på charen - Det under fungere ikke - i skal selv implementere charen  
          foreach (double item in Maaling.EKG_Data)
-         { 
-         Line.valule.add(item)
+         {
+                ekgvalues.Add(item);
          }
 
          //Dette er en bool alt efter om der er dedekteret sygdom eller ej - skriv eller ring hvis i mangler noget :D 
@@ -109,6 +114,8 @@ namespace Projektet_GUI
 
          //Kode for at få et ekg op på charen  
 
+
+            //Hej
       }
 
    }
