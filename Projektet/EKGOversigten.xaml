@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Title="EKGOversigt" Height="586.838" Width="1163.134" Loaded="Window_Loaded" Background="#FFB3D7FF">
     <Grid>
-        <lvc:CartesianChart Series="{Binding Path=MyCollection}" HorizontalAlignment="Right" Margin="0,0,0,-0.667" Width="703" >
+        <lvc:CartesianChart Series="{Binding Path=ekgcollection}" HorizontalAlignment="Right" Margin="0,0,0,-0.667" Width="703" >
 
         </lvc:CartesianChart>
 
