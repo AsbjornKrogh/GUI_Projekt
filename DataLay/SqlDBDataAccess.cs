@@ -324,14 +324,14 @@ namespace Data
       }
 
 
-      public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_beskrivelse, string borger_cprnr)
+      public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr)
       {
          try
          {
             connectionOff.Open();
 
-            string insertStringParam = @"INSERT INTO dbo.EKGMAELING (ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_beskrivelse, borger_cprnr) 
-                                      VALUES(@ekgmaaleid, @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_beskrivelse, @borger_cprnr)";
+            string insertStringParam = @"INSERT INTO dbo.EKGMAELING (ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr) 
+                                      VALUES(@ekgmaaleid, @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_cprnr)";
 
             using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
             {
@@ -345,7 +345,6 @@ namespace Data
                cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
                cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
                cmdOff.Parameters.AddWithValue("@borger_efternavn", borger_efternavn);
-               cmdOff.Parameters.AddWithValue("@borger_beskrivelse", borger_beskrivelse);
                cmdOff.Parameters.AddWithValue("@borger_cprnr", borger_cprnr);
                cmdOff.ExecuteReader();
             }
