@@ -63,7 +63,7 @@ namespace Projektet_GUI
             if (Convert.ToDateTime(DatoLB.SelectedItem) == item.DateTime)
             {
                ekgmaaleid = item.id;
-               logicref.gemIoffentligDatabase(ekgmaaleid, Convert.ToDateTime(DatoLB.SelectedItem), antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, patient1.Navn, patient1.Efternavn, PatientInfoTB.Text, PatCprTB.Text);
+               logicref.gemIoffentligDatabase(ekgmaaleid, Convert.ToDateTime(DatoLB.SelectedItem), antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, patient1.Navn, patient1.Efternavn, PatCprTB.Text);
             }
          }
          //logicref.gemIoffentligDatabase(ekgmaaleid, Convert.ToDateTime(DatoLB.SelectedItem), "", fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
@@ -109,7 +109,6 @@ namespace Projektet_GUI
          }
 
          //Dette er en bool alt efter om der er dedekteret sygdom eller ej - skriv eller ring hvis i mangler noget :D 
-         Maaling.Sygdom 
 
 
          //Kode for at få et ekg op på charen  
