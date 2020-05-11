@@ -3,16 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         xmlns:local="clr-namespace:Projektet_GUI"
+        
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="EKGOversigt" Height="677.838" Width="1163.134" Loaded="Window_Loaded" Background="#FFB3D7FF">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="254*"/>
-            <RowDefinition Height="397*"/>
-        </Grid.RowDefinitions>
-        <lvc:CartesianChart Series="{Binding Path=MyCollection}" HorizontalAlignment="Right" Margin="0,0,-0.333,-0.333" Width="703" Grid.RowSpan="2" >
+        <lvc:CartesianChart Series="{Binding Path=MyCollection}" HorizontalAlignment="Right" Margin="0,0,0,-0.667" Width="703" >
 
         </lvc:CartesianChart>
 
