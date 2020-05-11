@@ -8,7 +8,7 @@
         
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="EKGOversigt" Height="677.838" Width="1163.134" Loaded="Window_Loaded" Background="#FFB3D7FF">
+        Title="EKGOversigt" Height="586.838" Width="1163.134" Loaded="Window_Loaded" Background="#FFB3D7FF">
     <Grid>
         <lvc:CartesianChart Series="{Binding Path=MyCollection}" HorizontalAlignment="Right" Margin="0,0,0,-0.667" Width="703" >
 
@@ -18,19 +18,19 @@
         <Label Content="Dato" HorizontalAlignment="Left" Margin="245,48,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.772,-0.083" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
         <ListBox x:Name="PatientLB" HorizontalAlignment="Left" Height="155" Margin="33,74,0,0" VerticalAlignment="Top" Width="205" SelectionChanged="PatientLB_SelectionChanged" FontFamily="Times New Roman" FontSize="14"/>
         <ListBox x:Name="DatoLB" HorizontalAlignment="Left" Height="155" Margin="243,74,0,0" VerticalAlignment="Top" Width="158" SelectionChanged="DatoLB_SelectionChanged" FontFamily="Times New Roman" FontSize="14"/>
-        <Label Content="Kommentar" HorizontalAlignment="Left" Margin="37,194.667,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" Grid.Row="1" FontSize="14"/>
-        <TextBox x:Name="KommentarTB" HorizontalAlignment="Left" Height="80" Margin="167,194.667,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.525,0.17" FontFamily="Times New Roman" Grid.Row="1" FontSize="14"/>
-        <Button x:Name="GemB" Content="Gem" HorizontalAlignment="Left" Margin="169,282.667,0,0" VerticalAlignment="Top" Width="157" Click="GemB_Click" BorderBrush="#FF4395EE" Background="#FF4395EE" FontFamily="Times New Roman" Height="31" Foreground="#FF0D4AC8" FontWeight="Bold" Grid.Row="1" FontSize="14"/>
-        <Label Content="Ansvarlig fornavn" HorizontalAlignment="Left" Margin="37,40.667,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14" Grid.Row="1"/>
-        <TextBox x:Name="fnTB" HorizontalAlignment="Left" Height="24" Margin="167,40.667,0,0" TextWrapping="Wrap" Text="Fornavn" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" RenderTransformOrigin="0.523,1.431" FontSize="14" Grid.Row="1"/>
-        <TextBox x:Name="EfTB" HorizontalAlignment="Left" Height="24" Margin="167,75.667,0,0" TextWrapping="Wrap" Text="Efternavn" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" RenderTransformOrigin="0.536,1.542" Grid.Row="1" FontSize="14"/>
-        <Label Content="Patient CPR" HorizontalAlignment="Left" Margin="37,151.667,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" Grid.Row="1" FontSize="14"/>
-        <TextBox x:Name="PatCprTB" HorizontalAlignment="Left" Height="22" Margin="167,153.667,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" Grid.Row="1" FontSize="14"/>
-        <TextBox x:Name="MedarnrTB" HorizontalAlignment="Left" Height="23" Margin="167,111.667,0,0" TextWrapping="Wrap" Text="Medarbejder nr." VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" Grid.Row="1" FontSize="14"/>
-        <Label Content="Orgination" HorizontalAlignment="Left" Margin="37,8.667,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14" Grid.Row="1"/>
-        <TextBox x:Name="orgTB" HorizontalAlignment="Left" Height="24" Margin="167,8.667,0,0" TextWrapping="Wrap" Text="Århus lægepraksis" VerticalAlignment="Top" Width="120" IsEnabled="False" FontFamily="Times New Roman" FontSize="14" Grid.Row="1"/>
-        <Label Content="Oversigt over EKG-Målinger" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF0D4AC8"/>
-        <Label Content="Ansvarlig efternavn" HorizontalAlignment="Left" Margin="37,0,0,296.667" VerticalAlignment="Bottom" Foreground="#FF0D4AC8" FontFamily="Times New Roman" Grid.Row="1" FontSize="14"/>
-        <Label Content="Medarbejder nr." HorizontalAlignment="Left" Margin="37,111.667,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" Grid.Row="1" FontSize="14"/>
+        <Label Content="Kommentar" HorizontalAlignment="Left" Margin="41,413,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
+        <TextBox x:Name="KommentarTB" HorizontalAlignment="Left" Height="80" Margin="165,413,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.525,0.17" FontFamily="Times New Roman" FontSize="14"/>
+        <Button x:Name="GemB" Content="Gem" HorizontalAlignment="Left" Margin="167,503,0,0" VerticalAlignment="Top" Width="157" Click="GemB_Click" BorderBrush="#FF4395EE" Background="#FF4395EE" FontFamily="Times New Roman" Height="31" Foreground="#FF0D4AC8" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Ansvarlig fornavn" HorizontalAlignment="Left" Margin="41,277,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14" Height="26" Width="121"/>
+        <TextBox x:Name="fnTB" HorizontalAlignment="Left" Height="24" Margin="167,280,0,0" TextWrapping="Wrap" Text="Fornavn" VerticalAlignment="Top" Width="157" FontFamily="Times New Roman" RenderTransformOrigin="0.523,1.431" FontSize="14"/>
+        <TextBox x:Name="EfTB" HorizontalAlignment="Left" Height="24" Margin="167,311,0,0" TextWrapping="Wrap" Text="Efternavn" VerticalAlignment="Top" Width="157" FontFamily="Times New Roman" RenderTransformOrigin="0.536,1.542" FontSize="14"/>
+        <Label Content="Patient CPR" HorizontalAlignment="Left" Margin="41,382,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
+        <TextBox x:Name="PatCprTB" HorizontalAlignment="Left" Height="22" Margin="167,386,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="157" FontFamily="Times New Roman" FontSize="14"/>
+        <TextBox x:Name="MedarnrTB" HorizontalAlignment="Left" Height="23" Margin="167,344,0,0" TextWrapping="Wrap" Text="Medarbejder nr." VerticalAlignment="Top" Width="157" FontFamily="Times New Roman" FontSize="14"/>
+        <Label Content="Orgination" HorizontalAlignment="Left" Margin="41,245,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
+        <TextBox x:Name="orgTB" HorizontalAlignment="Left" Height="24" Margin="167,247,0,0" TextWrapping="Wrap" Text="Århus lægepraksis" VerticalAlignment="Top" Width="157" IsEnabled="False" FontFamily="Times New Roman" FontSize="14"/>
+        <Label Content="Oversigt over EKG-Målinger" HorizontalAlignment="Left" Margin="33,19,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="#FF0D4AC8"/>
+        <Label Content="Ansvarlig efternavn" HorizontalAlignment="Left" Margin="41,0,0,224.333" VerticalAlignment="Bottom" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
+        <Label Content="Medarbejder nr." HorizontalAlignment="Left" Margin="41,340,0,0" VerticalAlignment="Top" Foreground="#FF0D4AC8" FontFamily="Times New Roman" FontSize="14"/>
     </Grid>
 </Window>
