@@ -113,7 +113,7 @@ namespace Projektet_GUI
          //Kode for at få et ekg op på charen  
 
 
-            //Hej
+            
       }
 
    }
