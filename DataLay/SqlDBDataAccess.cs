@@ -29,7 +29,7 @@ namespace Data
       private List<Patient> PatientListe;
       private List<EKG_Maaling> MaalingListe;
       private List<EKG> EKGmaalereListe;
-      private List<double> Maalepunkter; 
+      private List<double> Maalepunkter;
 
       private Patient IndleverPatient;
       private EKG_Maaling EKGMaaling;
@@ -289,17 +289,17 @@ namespace Data
          connection.Close();
       }
 
-      
+
       //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
       public EKG_Maaling LoadEKGMaaling(string CPR, DateTime Time)
       {
-         Maalepunkter = new List<double>(); 
+         Maalepunkter = new List<double>();
          connection.Open();
 
-         byte[] bytesArray; 
+         byte[] bytesArray;
          double[] tal;
 
-         sql = "Select EKG_Data, CPR, tidsstempel, id from dbo.EKGData Where tidsstempel = '" + Time.Year + "-" + Time.Month + "-" + Time.Day + " " + Time.Hour + ":" + Time.Minute + ":" + Time.Second + ".0" + Time.Millisecond + "'"; 
+         sql = "Select EKG_Data, CPR, tidsstempel, id from dbo.EKGData Where tidsstempel = '" + Time.Year + "-" + Time.Month + "-" + Time.Day + " " + Time.Hour + ":" + Time.Minute + ":" + Time.Second + ".0" + Time.Millisecond + "'";
 
          using (command = new SqlCommand(sql, connection))
          {
@@ -318,34 +318,56 @@ namespace Data
 
          connection.Close();
 
-         return EKGMaaling; 
+         return EKGMaaling;
       }
 
       //Metoden som skal gennem det analyserede EKG i den offentlige database. 
       public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr)
       {
-        
-            connectionOff.Open();
+         connectionOff.Open();
 
-            string insertStringParam = @"INSERT INTO dbo.EKGMAELING ( dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvrmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr) 
-                                      VALUES( @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvrmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_cprnr)";
+         int retur; 
 
-            using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
-            {
-               cmdOff.Parameters.AddWithValue("@dato", dato);
-               cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
-               cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
-               cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
-               cmdOff.Parameters.AddWithValue("@sfp_ansvrmedarbjnr", sfp_ansvmedarbjnr);
-               cmdOff.Parameters.AddWithValue("@sfp_ans_org", sfp_ans_org);
-               cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
-               cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
-               cmdOff.Parameters.AddWithValue("@borger_efternavn", borger_efternavn);
-               cmdOff.Parameters.AddWithValue("@borger_cprnr", borger_cprnr);
-               cmdOff.ExecuteReader();
-            }
+         string insertStringParam = @"INSERT INTO dbo.EKGMAELING ( dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvrmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr) 
+                                    OUT INSERTED.EKGMAALEID  
+                                    VALUES( @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvrmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_cprnr)";
 
-            connectionOff.Close();      
+         using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
+         {
+            cmdOff.Parameters.AddWithValue("@dato", dato);
+            cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
+            cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
+            cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
+            cmdOff.Parameters.AddWithValue("@sfp_ansvrmedarbjnr", sfp_ansvmedarbjnr);
+            cmdOff.Parameters.AddWithValue("@sfp_ans_org", sfp_ans_org);
+            cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
+            cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
+            cmdOff.Parameters.AddWithValue("@borger_efternavn", borger_efternavn);
+            cmdOff.Parameters.AddWithValue("@borger_cprnr", borger_cprnr);
+            retur = Convert.ToInt32(cmdOff.ExecuteReader());
+         }
+
+         insertStringParam = @"INSERT INTO dbo.EKDATA ( dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvrmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr) 
+                               VALUES( @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvrmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_cprnr)";
+
+         using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
+         {
+            cmdOff.Parameters.AddWithValue("@dato", dato);
+            cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
+            cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
+            cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
+            cmdOff.Parameters.AddWithValue("@sfp_ansvrmedarbjnr", sfp_ansvmedarbjnr);
+            cmdOff.Parameters.AddWithValue("@sfp_ans_org", sfp_ans_org);
+            cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
+            cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
+            cmdOff.Parameters.AddWithValue("@borger_efternavn", borger_efternavn);
+            cmdOff.Parameters.AddWithValue("@borger_cprnr", borger_cprnr);
+            cmdOff.ExecuteReader();
+         }
+
+
+
+         connectionOff.Close();
       }
 
    }
