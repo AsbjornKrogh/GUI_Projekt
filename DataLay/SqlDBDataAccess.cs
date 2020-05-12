@@ -232,7 +232,6 @@ namespace Data
       }
 
       //Henter 1 patient fra DB, hvor EKGID'et stemmer overens (Bruges i Indlever vinduet) 
-
       public Patient LoadPatientCPR(string CPR)
       {
          sql = "Select * from dbo.EKGPatient where CPR = '" + CPR + "'";
@@ -290,8 +289,7 @@ namespace Data
          connection.Close();
       }
 
-
-      //Ikke inplementeret
+      
       //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
       public EKG_Maaling LoadEKGMaaling(string CPR, DateTime Time)
       {
@@ -323,24 +321,22 @@ namespace Data
          return EKGMaaling; 
       }
 
-
+      //Metoden som skal gennem det analyserede EKG i den offentlige database. 
       public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr)
       {
-         try
-         {
+        
             connectionOff.Open();
 
-            string insertStringParam = @"INSERT INTO dbo.EKGMAELING (ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr) 
-                                      VALUES(@ekgmaaleid, @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_cprnr)";
+            string insertStringParam = @"INSERT INTO dbo.EKGMAELING ( dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvrmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr) 
+                                      VALUES( @dato, @antalmaalinger, @sfp_ansvfornavn, @sfp_ansvefternavn, @sfp_ansvrmedarbjnr, @sfp_ans_org, @sfp_anskommentar, @borger_fornavn, @borger_efternavn, @borger_cprnr)";
 
             using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
             {
-               cmdOff.Parameters.AddWithValue("@ekgmaaleid", ekgmaaleid);
                cmdOff.Parameters.AddWithValue("@dato", dato);
                cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
                cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
                cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
-               cmdOff.Parameters.AddWithValue("@sfp_ansvmedarbjnr", sfp_ansvmedarbjnr);
+               cmdOff.Parameters.AddWithValue("@sfp_ansvrmedarbjnr", sfp_ansvmedarbjnr);
                cmdOff.Parameters.AddWithValue("@sfp_ans_org", sfp_ans_org);
                cmdOff.Parameters.AddWithValue("@sfp_anskommentar", sfp_anskommentar);
                cmdOff.Parameters.AddWithValue("@borger_fornavn", borger_fornavn);
@@ -349,12 +345,7 @@ namespace Data
                cmdOff.ExecuteReader();
             }
 
-            connectionOff.Close();
-
-
-         }
-         catch
-         { }
+            connectionOff.Close();      
       }
 
    }

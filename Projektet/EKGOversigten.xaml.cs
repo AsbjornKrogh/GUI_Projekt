@@ -55,18 +55,22 @@ namespace Projektet_GUI
         {
             MaalingListe = logicref.getMaalingListe(PatCprTB.Text);
             patient1 = logicref.getCPR(PatCprTB.Text);
+
             int ekgmaaleid;
             int antalmaalinger = 0;
+
             foreach (EKG_Maaling item in MaalingListe)
             {
                 antalmaalinger++;
                 if (Convert.ToDateTime(DatoLB.SelectedItem) == item.DateTime)
                 {
-                    ekgmaaleid = item.id;
-                    logicref.gemIoffentligDatabase(ekgmaaleid, Convert.ToDateTime(DatoLB.SelectedItem), antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, patient1.Navn, patient1.Efternavn, PatCprTB.Text);
+                    
+                    logicref.gemIoffentligDatabase(0, Convert.ToDateTime(DatoLB.SelectedItem), antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, patient1.Navn, patient1.Efternavn, PatCprTB.Text);
                 }
             }
-            //logicref.gemIoffentligDatabase(ekgmaaleid, Convert.ToDateTime(DatoLB.SelectedItem), "", fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
+
+
+           // logicref.gemIoffentligDatabase(null, Convert.ToDateTime(DatoLB.SelectedItem),antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
             //uploadet alle informationer til EGKmålinger og EKGData (offentlige)
         }
 
