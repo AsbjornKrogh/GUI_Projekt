@@ -51,12 +51,12 @@ namespace Projektet
 
         private void IndleverB_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra" + indleverpatient.Navn + indleverpatient.Efternavn + "med tilhørende EKDID:" + indleverpatient.EKGID + "?","Advarsel", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra " + indleverpatient.Navn + " " + indleverpatient.Efternavn + " med tilhørende EKG ID: " + indleverpatient.EKGID + "?","Advarsel", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
 
-                    MessageBox.Show("EKG-Måler med EKGID'et" + indleverpatient.EKGID + "er hermed indleveret");
+                    MessageBox.Show("EKG-Måler med EKGID'et " + indleverpatient.EKGID + " er hermed indleveret");
                     logicref.indleverEkgMåler(indleverpatient.CPR, indleverpatient.EKGID);
 
                     break;

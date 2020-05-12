@@ -25,6 +25,7 @@ namespace Projektet_GUI
     public partial class EKGOversigten : Window
     {
         public ChartValues<double> Ekgvalues { get; set; }
+        public string[] LabelsY { get; set; }
         private List<Patient> PatientListe;
         private Logic logicref;
         private List<EKG_Maaling> MaalingListe;
@@ -103,7 +104,7 @@ namespace Projektet_GUI
 
             Ekgvalues = new ChartValues<double>();
             DataContext = this;
-
+            LabelsY = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" };
 
             //Kode for at få et ekg op på charen - Det under fungere ikke - i skal selv implementere charen  
             foreach (double item in Maaling.EKG_Data)

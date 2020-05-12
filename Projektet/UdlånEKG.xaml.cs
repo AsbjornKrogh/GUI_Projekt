@@ -63,9 +63,9 @@ namespace Projektet
                 case MessageBoxResult.Yes:
                     besked = logicref.getudlånBesked(CPRTB.Text, NavnTB.Text, EfterNavnTB.Text, Convert.ToInt32(EKGmålerId.SelectedItem));
                     if (besked == 2)
-                        MessageBox.Show("Patienten oprettet og EKG måler " + EKGmålerId.SelectedItem + "udlånt");
+                        MessageBox.Show("Patienten er oprettet og EKG måler " + EKGmålerId.SelectedItem + " udlånt");
                     if (besked == 1)
-                        MessageBox.Show("Patienten findes allerede i DB og har fået EKG måler " + EKGmålerId.SelectedItem + "udlånt");
+                        MessageBox.Show("Patienten findes allerede i databasen og har fået EKG måler " + EKGmålerId.SelectedItem + " tildelt");
                     break;
 
                 case MessageBoxResult.No:
@@ -97,7 +97,13 @@ namespace Projektet
 
         private void HentInfoB_Click(object sender, RoutedEventArgs e)
         {
-            logicref.getEKGMålere();
+            EKGmålerId.Items.Clear();
+            Patient patient = logicref.getCPR(CPRTB.Text);
+            NavnTB.Text = patient.Navn;
+            EfterNavnTB.Text = patient.Efternavn;
+            FødselsdagTB.Text = patient.CPR;
+
+            EKGmaalereListe = logicref.getEKGMålere();
             foreach (EKG item in EKGmaalereListe)
             {
                 if (item.Availiable == true)
