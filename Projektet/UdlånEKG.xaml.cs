@@ -25,7 +25,6 @@ namespace Projektet
     public partial class UdlånEKG : Window
     {
         MainWindow Main;
-        SqlDBDataAccess DBDataAccess;
 
         private List<EKG> EKGmaalereListe;
         private Patient person;
@@ -33,25 +32,11 @@ namespace Projektet
 
         public UdlånEKG(MainWindow main, Logic logicref)
         {
-            this.logicref = logicref;
             InitializeComponent();
             Main = main;
-
-            DBDataAccess = new SqlDBDataAccess();
+            this.logicref = logicref;
         }
 
-        private void Udlån_Loaded(object sender, RoutedEventArgs e)
-        {
-            EKGmaalereListe = logicref.getEKGMålere();
-            foreach (EKG item in EKGmaalereListe)
-            {
-                if (item.Availiable == true)
-                {
-                    EKGmålerId.Items.Add(item.EKGID);
-                }
-            }
-
-        }
 
         private void UdlånB_Click(object sender, RoutedEventArgs e)
         {
@@ -75,25 +60,9 @@ namespace Projektet
 
         private void AnnullerB_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
 
-        private void CPRTB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                person = logicref.getCPR(CPRTB.Text);
-
-                NavnTB.Text = person.Navn;
-                EfterNavnTB.Text = person.Efternavn;
-                FødselsdagTB.Text = Convert.ToString(person.CPR);
-            }
-        }
-
-        private void EKGmåler_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void HentInfoB_Click(object sender, RoutedEventArgs e)
         {

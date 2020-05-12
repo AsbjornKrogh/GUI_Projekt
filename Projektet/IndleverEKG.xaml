@@ -8,7 +8,7 @@
         Title="IndleverEKG" Height="348.113" Width="305.121" Background="#FFB3D7FF">
     <Grid>
         <Label Content="EKG-Måler ID:" HorizontalAlignment="Left" Margin="24,20,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold" Foreground="#FF0D4AC8"/>
-        <TextBox x:Name="IDTB" HorizontalAlignment="Left" Height="25" Margin="29,50,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="135" FontFamily="Times New Roman" FontSize="14" KeyDown="IDTB_KeyDown"/>
+        <TextBox x:Name="IDTB" HorizontalAlignment="Left" Height="25" Margin="29,50,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="135" FontFamily="Times New Roman" FontSize="14"/>
         <Button x:Name="HentinfoB" Content="Hent Informationer" HorizontalAlignment="Left" Margin="31,88,0,0" VerticalAlignment="Top" Width="135" FontFamily="Times New Roman" FontSize="14" Height="25" FontWeight="Bold" Background="#FF4395EE" Click="HentinfoB_Click"/>
         <TextBox x:Name="InfoTB" HorizontalAlignment="Left" Height="52" Margin="30,138,0,0" TextWrapping="Wrap" Text="EKG ID:               Udlånt til:" VerticalAlignment="Top" Width="196" FontFamily="Times New Roman" FontSize="14"/>
         <Button x:Name="IndleverB" Content="Indlever" HorizontalAlignment="Left" Margin="131,215,0,0" VerticalAlignment="Top" Width="85" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold" Height="35" Background="#FF4395EE" Click="IndleverB_Click"/>

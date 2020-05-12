@@ -24,7 +24,6 @@ namespace Projektet
     public partial class IndleverEKG : Window
     {
         MainWindow Main;
-        SqlDBDataAccess DBDataAccess;
 
         private Patient indleverpatient;
         private Logic logicref;
@@ -35,11 +34,10 @@ namespace Projektet
         {
             InitializeComponent();
             Main = main;
-            IDTB.Focus();
-            IDTB.SelectAll();
-            DBDataAccess = new SqlDBDataAccess();
             this.logicref = logicref;
 
+            IDTB.Focus();
+            IDTB.SelectAll();
         }
 
         private void HentinfoB_Click(object sender, RoutedEventArgs e)
@@ -69,12 +67,7 @@ namespace Projektet
 
         private void AnnullerB_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
-
-        private void IDTB_KeyDown(object sender, KeyEventArgs e)
-        {
-
+            this.Close();
         }
 
 
