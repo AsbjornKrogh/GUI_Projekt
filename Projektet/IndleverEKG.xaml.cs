@@ -72,10 +72,7 @@ namespace Projektet
             Application.Current.Shutdown();
         }
 
-        private void IDTB_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
+       
 
 
     }
