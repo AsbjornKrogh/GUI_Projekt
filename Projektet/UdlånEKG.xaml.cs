@@ -66,6 +66,14 @@ namespace Projektet
 
         private void HentInfoB_Click(object sender, RoutedEventArgs e)
         {
+            Patient patient2 = logicref.getCPR(CPRTB.Text);
+
+            if (patient2.EKGID != 0)
+            {
+                MessageBox.Show("Denne patient har allerede tilknyttet en EKG-måler");
+                this.Close();
+            }
+
             EKGmålerId.Items.Clear();
             Patient patient = logicref.getCPR(CPRTB.Text);
             NavnTB.Text = patient.Navn;

@@ -246,7 +246,7 @@ namespace Data
 
                 if (dataReader.Read())
                 {
-                    IndleverPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]));
+                    IndleverPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]), Convert.ToInt32(dataReader["EKGID"]));
                 }
 
                 dataReader.Close();
@@ -259,7 +259,17 @@ namespace Data
             }
             catch
             {
-                return null;
+                
+                IndleverPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]), 0);
+               
+
+                dataReader.Close();
+
+                command.Dispose();
+
+                connection.Close();
+
+                return IndleverPatient;
             }
 
         }
