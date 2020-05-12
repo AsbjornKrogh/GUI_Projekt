@@ -289,17 +289,17 @@ namespace Data
             connection.Close();
         }
 
-
+      
       //metoden skal hente 1 specifik EKG målling som skal vises på GUI char
       public EKG_Maaling LoadEKGMaaling(string CPR, DateTime Time)
       {
-         Maalepunkter = new List<double>();
+         Maalepunkter = new List<double>(); 
          connection.Open();
 
-         byte[] bytesArray;
+         byte[] bytesArray; 
          double[] tal;
 
-         sql = "Select EKG_Data, CPR, tidsstempel, id from dbo.EKGData Where tidsstempel = '" + Time.Year + "-" + Time.Month + "-" + Time.Day + " " + Time.Hour + ":" + Time.Minute + ":" + Time.Second + ".0" + Time.Millisecond + "'";
+         sql = "Select EKG_Data, CPR, tidsstempel, id from dbo.EKGData Where tidsstempel = '" + Time.Year + "-" + Time.Month + "-" + Time.Day + " " + Time.Hour + ":" + Time.Minute + ":" + Time.Second + ".0" + Time.Millisecond + "'"; 
 
             using (command = new SqlCommand(sql, connection))
             {
@@ -318,13 +318,14 @@ namespace Data
 
             connection.Close();
 
-         return EKGMaaling;
+         return EKGMaaling; 
       }
 
-      //Metoden som skal gennem det analyserede EKG i den offentlige database. 
-      public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr)
-      {
-         connectionOff.Open();
+        //Metoden som skal gennem det analyserede EKG i den offentlige database. 
+        public void gemIOffentligDataBase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr)
+        {
+
+            connectionOff.Open();
 
          int retur; 
 
@@ -365,12 +366,10 @@ namespace Data
             cmdOff.ExecuteReader();
          }
 
-            connectionOff.Close();
-        }
-        public void gemIOffentligDBEKGDATA(string raa_data, double samplerate_hz, int interval_sec, double interval_min, string data_format, string bin_eller_tekst, string maaleformat_type, DateTime start_tid, string kommentar, int ekgmaaleid, string maaleenhed_identifikation)
-        {
 
-            connectionOff.Open();
+
+         connectionOff.Close();
+      }
 
             string insertStringParam = @"INSERT INTO dbo.EKGMAELING (raa_data, samplerate_hz, interval_sec, interval_min, data_format, bin_eller_tekst, maaleformat_type, start_tid, kommentar, ekgmaaleid, maaleenhed_identifikation) 
                                       VALUES(@raa_data, @samplerate_hz, @interval_sec, @interval_min, @data_format, @bin_eller_tekst, @maaleformat_type, @start_tid, @kommentar, @ekgmaaleid, @maaleenhed_identifikation)";
