@@ -57,14 +57,11 @@ namespace LogicLayer
             return DBDataAccess.LoadAllMålinger(cpr);
         }
 
-        public void gemIoffentligDatabase(int ekgmaaleid, DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr)
+        public void gemIoffentligDatabase(DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr, EKG_Maaling maaling)
         {
-            DBDataAccess.gemIOffentligDataBase(ekgmaaleid, dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr);
+            DBDataAccess.gemIOffentligDataBase(dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr, maaling);
         }
-        public void gemIoffentligDBEKGDATA(string raa_data, double samplerate_hz, int interval_sec, double interval_min, string data_format, string bin_eller_tekst, string maaleformat_type, DateTime start_tid, string kommentar, int ekgmaaleid, string maaleenhed_identifikation)
-        {
-            DBDataAccess.gemIOffentligDBEKGDATA(raa_data, samplerate_hz, interval_sec, interval_min, data_format, bin_eller_tekst, maaleformat_type, start_tid, kommentar, ekgmaaleid, maaleenhed_identifikation);
-        }
+
         public EKG_Maaling sygdomsalgoritme_Måling(string cpr, DateTime time)
         {
             //Opjekter og atributter til udregnelse af sygdom. 
