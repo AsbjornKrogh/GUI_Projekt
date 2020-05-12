@@ -57,7 +57,6 @@ namespace Projektet_GUI
             MaalingListe = logicref.getMaalingListe(PatCprTB.Text);
             patient1 = logicref.getCPR(PatCprTB.Text);
 
-            int ekgmaaleid;
             int antalmaalinger = 0;
 
             foreach (EKG_Maaling item in MaalingListe)
@@ -67,6 +66,7 @@ namespace Projektet_GUI
                 {
                     
                     logicref.gemIoffentligDatabase(0, Convert.ToDateTime(DatoLB.SelectedItem), antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, patient1.Navn, patient1.Efternavn, PatCprTB.Text);
+                    logicref.gemIoffentligDBEKGDATA("a", 2, 3, 4, "a", "a", "a", Convert.ToDateTime(02-02-2020), "a", 10, "a");
                 }
             }
 
@@ -120,12 +120,6 @@ namespace Projektet_GUI
             {
                 sygdomTB.Text = "Nej";
             }
-
-            //Dette er en bool alt efter om der er dedekteret sygdom eller ej - skriv eller ring hvis i mangler noget :D 
-
-
-            //Kode for at få et ekg op på charen  
-
 
 
         }
