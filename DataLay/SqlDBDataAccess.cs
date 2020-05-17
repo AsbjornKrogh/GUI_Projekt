@@ -33,6 +33,7 @@ namespace Data
       private double[] MalepunkterArray;
 
       private Patient IndleverPatient;
+        private Patient udlaanPatient;
       private EKG_Maaling EKGMaaling;
 
       public SqlDBDataAccess()
@@ -103,7 +104,7 @@ namespace Data
          }
       }
 
-      //Metoden som henter alle tilgængelig patinter (ect til en listbox)
+      //Metoden som henter alle tilgængelig patinter 
       public List<Patient> LoadAllPatient()
       {
          PatientListe = new List<Patient>();
@@ -137,7 +138,7 @@ namespace Data
          }
       }
 
-      //Metoden som henter alle "målinger" for patienten som er valgt til en listbox. 
+      //Metoden som henter alle "målinger" for valgt patient
       public List<EKG_Maaling> LoadAllMålinger(string CPR)
       {
          MaalingListe = new List<EKG_Maaling>();
@@ -199,7 +200,7 @@ namespace Data
          }
       }
 
-      //Henter 1 patient fra DB, hvor EKGID'et stemmer overens (Bruges i Indlever vinduet) 
+      //Henter 1 patient fra DB, hvor EKGID'et stemmer overens 
       public Patient LoadPatient(int EKGid)
       {
          sql = "Select * from dbo.EKGPatient where EKGID = '" + EKGid + "'";
@@ -232,7 +233,7 @@ namespace Data
 
       }
 
-      //Henter 1 patient fra DB, hvor CPR stemmer overens (Bruges i udlånvinduet)
+      //Henter 1 patient fra DB, hvor CPR stemmer overens 
       public Patient LoadPatientCPR(string CPR)
       {
          sql = "Select * from dbo.EKGPatient where CPR = '" + CPR + "'";
@@ -247,7 +248,7 @@ namespace Data
 
                 if (dataReader.Read())
                 {
-                    IndleverPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]), Convert.ToInt32(dataReader["EKGID"]));
+                    udlaanPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]), Convert.ToInt32(dataReader["EKGID"]));
                 }
 
             dataReader.Close();
@@ -256,12 +257,12 @@ namespace Data
 
             connection.Close();
 
-                return IndleverPatient;
+                return udlaanPatient;
             }
             catch
             {
                 
-                IndleverPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]), 0);
+                udlaanPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]), 0);
                
 
                 dataReader.Close();
@@ -270,12 +271,12 @@ namespace Data
 
                 connection.Close();
 
-                return IndleverPatient;
+                return udlaanPatient;
             }
 
       }
 
-      //Metoden indlevere EKG ved at ændre i EKGPatient og i EKGDB
+      //Metoden indleverer EKG ved at ændre i EKGPatient og i EKGDB
       public void IndleverEKG(string CPR, int EKGID)
       {
          string insertStringParam = @"UPDATE dbo.EKGPatient SET EKGID = null WHERE CPR = '" + CPR + "'";
