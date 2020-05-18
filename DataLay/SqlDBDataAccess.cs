@@ -17,10 +17,12 @@ namespace Data
       //Connectionsstrings til Lokal og Offentlig Database. 
       private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
       private string connetionStringSToffentlig = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=ST2PRJ2OffEKGDatabase;Password=ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      private string connetionStringLDB = @"Data Source=192.168.0.218\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
       //SQL 
       private SqlConnection connection;
       private SqlConnection connectionOff;
+      private SqlConnection connectionLDB;
       private SqlCommand command;
       private string sql = null;
       private SqlDataReader dataReader;
@@ -40,6 +42,7 @@ namespace Data
       {
          connection = new SqlConnection(connetionStringST);
          connectionOff = new SqlConnection(connetionStringSToffentlig);
+         connectionLDB = new SqlConnection(connetionStringLDB); 
       }
 
       //Metoden udlåner et EKG til en patient og læser ham ind i listen. 
@@ -348,7 +351,7 @@ namespace Data
 
          using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
          {
-            cmdOff.Parameters.AddWithValue("@dato", dato);
+            cmdOff.Parameters.AddWithValue("@dato", DateTime.Now.ToLocalTime());
             cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
             cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
             cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
