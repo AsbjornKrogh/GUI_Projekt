@@ -25,7 +25,7 @@
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Labels="{Binding LabelsY}" >
                     <lvc:Axis.Separator>
-                        <lvc:Separator Stroke="Black" StrokeThickness="0.1" Step="1">
+                        <lvc:Separator Stroke="Black" StrokeThickness="0.1" Step="0.5"> <!--1-->
                         </lvc:Separator>
                     </lvc:Axis.Separator>
                 </lvc:Axis>

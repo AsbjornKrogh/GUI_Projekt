@@ -310,7 +310,7 @@ namespace Data
          byte[] bytesArray;
          double[] tal;
 
-         sql = "Select EKG_Data, CPR, tidsstempel, samplerate_hz, interval_sec, data_format, bin_eller_tekst, maaleformat_type, start_tid, maalenehed from dbo.EKGData Where tidsstempel = '" + Time.Year + "-" + Time.Month + "-" + Time.Day + " " + Time.Hour + ":" + Time.Minute + ":" + Time.Second + ".0" + Time.Millisecond + "'";
+         sql = "Select EKG_Data, CPR, tidsstempel, samplerate_hz, interval_sec, data_format, bin_eller_tekst, maaleformat_type, start_tid, maalenehed from dbo.EKGData Where tidsstempel = '" + Time.Year + "-" + Time.Month + "-" + Time.Day + " " + Time.Hour + ":" + Time.Minute + ":" + Time.Second + "." + Time.Millisecond + "'";
 
          using (command = new SqlCommand(sql, connection))
          {
