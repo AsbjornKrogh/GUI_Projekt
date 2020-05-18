@@ -54,6 +54,7 @@ namespace Projektet_GUI
 
       private void GemB_Click(object sender, RoutedEventArgs e)
       {
+            MessageBox.Show("EKG-Målingen er nu afsendt til offentlig database");
          MaalingListe = logicref.getMaalingListe(PatCprTB.Text);
          patient1 = logicref.getCPR(PatCprTB.Text);
 
@@ -67,17 +68,14 @@ namespace Projektet_GUI
 
                logicref.gemIoffentligDatabase(Convert.ToDateTime(DatoLB.SelectedItem), antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, patient1.Navn, patient1.Efternavn, PatCprTB.Text, Maaling);
 
-               //logicref.gemIoffentligDBEKGDATA("a", 2, 3, 4, "a", "a", "a", Convert.ToDateTime(02-02-2020), "a", 10, "a");
             }
          }
 
-
-         // logicref.gemIoffentligDatabase(null, Convert.ToDateTime(DatoLB.SelectedItem),antalmaalinger, fnTB.Text, EfTB.Text, Convert.ToInt32(MedarnrTB.Text), orgTB.Text, KommentarTB.Text, "", "", PatientInfoTB.Text, PatCprTB.Text);
-         //uploadet alle informationer til EGKmålinger og EKGData (offentlige)
       }
 
       private void PatientLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
       {
+            DatoLB.Items.Clear();
          foreach (Patient item in PatientListe)
          {
             if (Convert.ToString(PatientLB.SelectedItem) == item.Navn + " " + item.Efternavn)
@@ -97,7 +95,9 @@ namespace Projektet_GUI
 
       private void DatoLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
       {
-         foreach (EKG_Maaling item in MaalingListe)
+            Ekgvalues = new ChartValues<double>();
+
+            foreach (EKG_Maaling item in MaalingListe)
          {
             if (item.Starttid == Convert.ToDateTime(DatoLB.SelectedItem))
                Maaling = logicref.sygdomsalgoritme_Måling(item.CPR, item.Starttid);
@@ -107,8 +107,7 @@ namespace Projektet_GUI
          DataContext = this;
          LabelsY = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" };
 
-
-         //Kode for at få et ekg op på charen - Det under fungere ikke - i skal selv implementere charen     
+  
          foreach (double item in Maaling.EKG_Data)
          {
             Ekgvalues.Add(item);

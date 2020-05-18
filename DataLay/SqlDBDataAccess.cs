@@ -348,7 +348,7 @@ namespace Data
 
          using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
          {
-            cmdOff.Parameters.AddWithValue("@dato", dato);
+                cmdOff.Parameters.AddWithValue("@dato", DateTime.Now.ToLocalTime());
             cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
             cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
             cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
