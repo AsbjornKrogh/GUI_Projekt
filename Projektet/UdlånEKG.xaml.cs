@@ -53,6 +53,7 @@ namespace Projektet
                             MessageBox.Show("Patienten er oprettet og EKG måler " + EKGmålerId.SelectedItem + " udlånt");
                         if (besked == 1)
                             MessageBox.Show("Patienten findes allerede i databasen og har fået EKG måler " + EKGmålerId.SelectedItem + " tildelt");
+                        this.Close();
                         break;
 
                     case MessageBoxResult.No:

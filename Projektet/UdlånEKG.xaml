@@ -7,21 +7,21 @@
         mc:Ignorable="d"
         Title="UdlånEKG" Width="385.175" Background="#FFB3D7FF">
     <Grid>
-        <Label Content="Indtast CPR for at hente patient informationer" HorizontalAlignment="Left" Margin="11,12,0,0" VerticalAlignment="Top" Height="28" Width="334" FontFamily="Times New Roman" FontWeight="Bold" FontSize="16" Foreground="#FF0D4AC8"/>
-        <TextBox x:Name="CPRTB" HorizontalAlignment="Left" Height="19" Margin="60,53,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="101" FontFamily="Times New Roman" FontSize="14"/>
-        <Label Content="CPR:" HorizontalAlignment="Left" Margin="18,49,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
-        <Button x:Name="HentInfoB" Content="Hent Informationer" HorizontalAlignment="Left" Margin="188,45,0,0" VerticalAlignment="Top" Width="136" Height="34" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold" BorderBrush="#FFBAB6B6" Background="#FF4395EE" Click="HentInfoB_Click"/>
-        <Label Content="Opret Patient" HorizontalAlignment="Left" Margin="13,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.092,-4.218" Width="114" FontFamily="Times New Roman" FontWeight="Bold" FontSize="16" Foreground="#FF0D4AC8"/>
-        <Label Content="Vælg EKG-måler:" HorizontalAlignment="Left" Margin="23,245,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
-        <Label Content="CPR:" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
-        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="23,158,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
-        <Label Content="Fornavn:" HorizontalAlignment="Left" Margin="23,123,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
-        <TextBox x:Name="FødselsdagTB" HorizontalAlignment="Left" Height="23" Margin="150,198,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="139" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBox x:Name="EfterNavnTB" HorizontalAlignment="Left" Height="23" Margin="150,158,0,0" TextWrapping="Wrap" Text="Efternavn" VerticalAlignment="Top" Width="139" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBox x:Name="NavnTB" HorizontalAlignment="Left" Height="23" Margin="150,125,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="139" FontFamily="Times New Roman" FontSize="14"/>
-        <ListBox x:Name="EKGmålerId" HorizontalAlignment="Left" Height="99" Margin="150,241,0,0" VerticalAlignment="Top" Width="139"/>
-        <Button x:Name="UdlånB" Content="Udlån" HorizontalAlignment="Left" Margin="249,345,0,0" VerticalAlignment="Top" Width="85" FontFamily="Times New Roman" FontSize="14" Height="35" RenderTransformOrigin="-0.594,0.267" FontWeight="Bold" Background="#FF4395EE" Click="UdlånB_Click"/>
-        <Button x:Name="AnnullerB" Content="Annuller" HorizontalAlignment="Left" Margin="150,345,0,0" VerticalAlignment="Top" Width="85" FontFamily="Times New Roman" FontSize="14" Height="35" RenderTransformOrigin="-0.711,0.485" FontWeight="Bold" Background="#FF4395EE" Click="AnnullerB_Click"/>
+        <Label Content="Indtast CPR for at hente patientinformationer" HorizontalAlignment="Left" Margin="11,12,0,0" VerticalAlignment="Top" Height="28" Width="334" FontFamily="Times New Roman" FontWeight="Bold" FontSize="16" Foreground="#FF0D4AC8"/>
+        <TextBox x:Name="CPRTB" HorizontalAlignment="Left" Height="23" Margin="159,59,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="136" FontFamily="Times New Roman" FontSize="14"/>
+        <Label Content="CPR-nummer:" HorizontalAlignment="Left" Margin="32,54,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
+        <Button x:Name="HentInfoB" Content="Hent Informationer" HorizontalAlignment="Left" Margin="159,96,0,0" VerticalAlignment="Top" Width="136" Height="34" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold" BorderBrush="#FFBAB6B6" Background="#FF4395EE" Click="HentInfoB_Click"/>
+        <Label Content="Patientinformationer" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.092,-4.218" Width="159" FontFamily="Times New Roman" FontWeight="Bold" FontSize="16" Foreground="#FF0D4AC8"/>
+        <Label Content="Vælg EKG-måler:" HorizontalAlignment="Left" Margin="32,286,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
+        <Label Content="CPR:" HorizontalAlignment="Left" Margin="32,236,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
+        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="32,199,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
+        <Label Content="Fornavn:" HorizontalAlignment="Left" Margin="32,164,0,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="14" Foreground="#FF0D4AC8"/>
+        <TextBox x:Name="FødselsdagTB" HorizontalAlignment="Left" Height="23" Margin="159,239,0,0" TextWrapping="Wrap" Text="000000-0000" VerticalAlignment="Top" Width="139" FontFamily="Times New Roman" FontSize="14"/>
+        <TextBox x:Name="EfterNavnTB" HorizontalAlignment="Left" Height="23" Margin="159,199,0,0" TextWrapping="Wrap" Text="Efternavn" VerticalAlignment="Top" Width="139" FontFamily="Times New Roman" FontSize="14"/>
+        <TextBox x:Name="NavnTB" HorizontalAlignment="Left" Height="23" Margin="159,167,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="139" FontFamily="Times New Roman" FontSize="14"/>
+        <ListBox x:Name="EKGmålerId" HorizontalAlignment="Left" Height="99" Margin="159,282,0,0" VerticalAlignment="Top" Width="139"/>
+        <Button x:Name="UdlånB" Content="Udlån" HorizontalAlignment="Left" Margin="238,386,0,0" VerticalAlignment="Top" Width="60" FontFamily="Times New Roman" FontSize="14" Height="35" RenderTransformOrigin="-0.594,0.267" FontWeight="Bold" Background="#FF4395EE" Click="UdlånB_Click"/>
+        <Button x:Name="AnnullerB" Content="Annuller" HorizontalAlignment="Left" Margin="159,386,0,0" VerticalAlignment="Top" Width="60" FontFamily="Times New Roman" FontSize="14" Height="35" RenderTransformOrigin="-0.711,0.485" FontWeight="Bold" Background="#FF4395EE" Click="AnnullerB_Click"/>
 
     </Grid>
 </Window>

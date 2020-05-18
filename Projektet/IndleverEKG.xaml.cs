@@ -46,7 +46,7 @@ namespace Projektet
             {
                 indleverpatient = logicref.getPatientinfo(Convert.ToInt32(IDTB.Text));
 
-                InfoTB.Text = indleverpatient.EKGID + "         " + indleverpatient.Navn + " " + indleverpatient.Efternavn;
+                InfoTB.Text = indleverpatient.EKGID + "              " + indleverpatient.Navn + " " + indleverpatient.Efternavn;
             }
             catch 
             {
@@ -65,7 +65,7 @@ namespace Projektet
 
                     MessageBox.Show("EKG-Måler med EKGID'et " + indleverpatient.EKGID + " er hermed indleveret");
                     logicref.indleverEkgMåler(indleverpatient.CPR, indleverpatient.EKGID);
-
+                    this.Close();
                     break;
 
                 case MessageBoxResult.No:

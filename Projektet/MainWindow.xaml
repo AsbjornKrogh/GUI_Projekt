@@ -13,7 +13,7 @@
                 <MenuItem x:Name="IndleverEkgM" Header="Indlever EKG-Måler" HorizontalAlignment="Left" Height="32" Width="313" Margin="-25,0,-148,0" Background="#FFCCE0F6" FontWeight="Bold" Click="IndleverEkgM_Click_1" />
 
             </MenuItem>
-            <MenuItem x:Name="PatintovM" Header="Patient oversigt" Height="34" Width="111" Background="#FF629FEA" FontFamily="Times New Roman" FontWeight="Bold" FontSize="14" Click="PatintovM_Click"/>
+            <MenuItem x:Name="PatintovM" Header="Patientoversigt" Height="34" Width="111" Background="#FF629FEA" FontFamily="Times New Roman" FontWeight="Bold" FontSize="14" Click="PatintovM_Click"/>
             <MenuItem x:Name="ExitM" Header="Exit" Height="34" Width="61" RenderTransformOrigin="0.5,0.5" Background="#FF96C2E6" FontFamily="Times New Roman" FontWeight="Bold" FontSize="14" Click="ExitM_Click">
                 <MenuItem.RenderTransform>
                     <TransformGroup>

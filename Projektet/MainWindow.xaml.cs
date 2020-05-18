@@ -25,24 +25,24 @@ namespace Projektet_GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Udlån = new UdlånEKG(this, logicobj);
-            Indlever = new IndleverEKG(this, logicobj);
-            EKGw = new EKGOversigten(logicobj);
 
         }
 
         private void PatintovM_Click(object sender, RoutedEventArgs e)
         {
+            EKGw = new EKGOversigten(logicobj);
             EKGw.ShowDialog();
         }
 
         private void IndleverEkgM_Click_1(object sender, RoutedEventArgs e)
         {
+            Indlever = new IndleverEKG(this, logicobj);
             Indlever.ShowDialog();
         }
 
         private void UdlånEkgM_Click_1(object sender, RoutedEventArgs e)
         {
+            Udlån = new UdlånEKG(this, logicobj);
             Udlån.ShowDialog();
         }
 
