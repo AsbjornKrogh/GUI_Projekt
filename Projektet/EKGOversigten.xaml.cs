@@ -43,14 +43,15 @@ namespace Projektet_GUI
             PatientListe = logicref.getPatientListe();
             foreach (Patient item in PatientListe)
             {
-
                 PatientLB.Items.Add(item.Navn + " " + item.Efternavn);
             }
 
             fnTB.Text = "Søren";
             EfTB.Text = "Pedersen";
             MedarnrTB.Text = "123";
-        }
+           
+            Ekgvalues = new ChartValues<double>();
+      }
 
         private void GemB_Click(object sender, RoutedEventArgs e)
         {
@@ -95,7 +96,8 @@ namespace Projektet_GUI
 
         private void DatoLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Ekgvalues = new ChartValues<double>();
+           
+            Ekgvalues.Clear(); 
 
             foreach (EKG_Maaling item in MaalingListe)
             {
@@ -103,11 +105,7 @@ namespace Projektet_GUI
                     Maaling = logicref.sygdomsalgoritme_Måling(item.CPR, item.Starttid);
             }
 
-            Ekgvalues = new ChartValues<double>();
-            DataContext = this;
-            LabelsY = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" };
-
-
+       
             foreach (double item in Maaling.EKG_Data)
             {
                 Ekgvalues.Add(item);
@@ -122,9 +120,12 @@ namespace Projektet_GUI
                 sygdomTB.Text = "Nej";
             }
 
+             DataContext = this;
+             LabelsY = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" };
 
-        }
 
-    }
+      }
+
+   }
 
 }
