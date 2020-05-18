@@ -42,9 +42,18 @@ namespace Projektet
 
         private void HentinfoB_Click(object sender, RoutedEventArgs e)
         {
-            indleverpatient = logicref.getPatientinfo(Convert.ToInt32(IDTB.Text));
+            try
+            {
+                indleverpatient = logicref.getPatientinfo(Convert.ToInt32(IDTB.Text));
 
-            InfoTB.Text = indleverpatient.EKGID + "         " + indleverpatient.Navn + " " + indleverpatient.Efternavn;
+                InfoTB.Text = indleverpatient.EKGID + "         " + indleverpatient.Navn + " " + indleverpatient.Efternavn;
+            }
+            catch 
+            {
+
+                MessageBox.Show("Det indtastede EKG-ID er ugyldigt");
+            }
+
         }
 
         private void IndleverB_Click(object sender, RoutedEventArgs e)
@@ -67,6 +76,7 @@ namespace Projektet
 
         private void AnnullerB_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Indlevering annulleret");
             this.Close();
         }
 

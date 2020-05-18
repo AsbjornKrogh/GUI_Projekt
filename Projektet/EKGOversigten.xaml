@@ -17,7 +17,7 @@
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis >
                     <lvc:Axis.Separator>
-                        <lvc:Separator Stroke="Black" StrokeThickness="0.1" Step="10"> <!--//0,04-->
+                        <lvc:Separator Stroke="Black" StrokeThickness="0.1" Step="10">
                         </lvc:Separator>
                     </lvc:Axis.Separator>
                 </lvc:Axis>

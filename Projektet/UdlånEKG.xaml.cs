@@ -24,7 +24,7 @@ namespace Projektet
     /// </summary>
     public partial class UdlånEKG : Window
     {
-        MainWindow Main;
+       private  MainWindow Main;
 
         private List<EKG> EKGmaalereListe;
         private Patient person;
@@ -40,26 +40,36 @@ namespace Projektet
 
         private void UdlånB_Click(object sender, RoutedEventArgs e)
         {
-            byte besked;
-            MessageBoxResult result = MessageBox.Show("Er du sikker på at vil udlåne EKG-måler " + EKGmålerId.SelectedItem + " til " + NavnTB.Text, "Advarsel", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-            switch (result)
+            if (CPRTB.Text != null && NavnTB.Text != null && EfterNavnTB.Text != null && FødselsdagTB.Text != null && EKGmålerId.SelectedItem != null)
             {
-                case MessageBoxResult.Yes:
-                    besked = logicref.getudlånBesked(CPRTB.Text, NavnTB.Text, EfterNavnTB.Text, Convert.ToInt32(EKGmålerId.SelectedItem));
-                    if (besked == 2)
-                        MessageBox.Show("Patienten er oprettet og EKG måler " + EKGmålerId.SelectedItem + " udlånt");
-                    if (besked == 1)
-                        MessageBox.Show("Patienten findes allerede i databasen og har fået EKG måler " + EKGmålerId.SelectedItem + " tildelt");
-                    break;
+                byte besked;
+                MessageBoxResult result = MessageBox.Show("Er du sikker på at vil udlåne EKG-måler " + EKGmålerId.SelectedItem + " til " + NavnTB.Text, "Advarsel", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                case MessageBoxResult.No:
-                    break;
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        besked = logicref.getudlånBesked(CPRTB.Text, NavnTB.Text, EfterNavnTB.Text, Convert.ToInt32(EKGmålerId.SelectedItem));
+                        if (besked == 2)
+                            MessageBox.Show("Patienten er oprettet og EKG måler " + EKGmålerId.SelectedItem + " udlånt");
+                        if (besked == 1)
+                            MessageBox.Show("Patienten findes allerede i databasen og har fået EKG måler " + EKGmålerId.SelectedItem + " tildelt");
+                        break;
+
+                    case MessageBoxResult.No:
+                        break;
+                }
             }
+            else
+            {
+                MessageBox.Show("Ikke alle felter er udfyldt");
+
+            }
+            
         }
 
         private void AnnullerB_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Udlån af EKG-måler er hermed annulleret");
             this.Close();
         }
 
@@ -90,7 +100,6 @@ namespace Projektet
             }
         }
 
-        //hej
     }
 
 }

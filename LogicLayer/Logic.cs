@@ -68,12 +68,11 @@ namespace LogicLayer
             int Tæller = 1;
             int Antal = 0;
 
-            double sample;
             int diff;
-            double threshold = 2.1;
+            double threshold = 1.7;
             bool belowThreshold = true;
 
-            int[] RTList = new int[20];
+            int[] RTList = new int[200];
 
             EKGmaaling = DBDataAccess.LoadEKGMaaling(cpr, time);
 
