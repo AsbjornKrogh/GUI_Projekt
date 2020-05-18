@@ -46,8 +46,6 @@ namespace Projektet_GUI
             Udlån.ShowDialog();
         }
 
-
-
         private void EKG_program_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();

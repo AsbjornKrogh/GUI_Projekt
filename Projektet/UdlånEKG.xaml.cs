@@ -24,7 +24,7 @@ namespace Projektet
     /// </summary>
     public partial class UdlånEKG : Window
     {
-        MainWindow Main;
+       private  MainWindow Main;
 
         private List<EKG> EKGmaalereListe;
         private Patient person;
@@ -60,6 +60,7 @@ namespace Projektet
 
         private void AnnullerB_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Udlån af EKG-måler er hermed annulleret");
             this.Close();
         }
 
@@ -90,7 +91,6 @@ namespace Projektet
             }
         }
 
-        //hej
     }
 
 }

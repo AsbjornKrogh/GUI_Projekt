@@ -49,7 +49,7 @@ namespace Projektet_GUI
 
          fnTB.Text = "Søren";
          EfTB.Text = "Pedersen";
-         MedarnrTB.Text = "12435687";
+         MedarnrTB.Text = "123";
       }
 
       private void GemB_Click(object sender, RoutedEventArgs e)
