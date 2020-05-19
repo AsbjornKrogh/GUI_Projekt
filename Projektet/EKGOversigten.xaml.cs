@@ -32,6 +32,12 @@ namespace Projektet_GUI
         private EKG_Maaling Maaling;
         private Patient patient1;
 
+        //til grid 
+        public Func<double, string> Formatter { get; set; }
+        public Func<double, string> Formatter1 { get; set; }
+        public Func<double, string> Formatter2 { get; set; }
+        public Func<double, string> Formatter3 { get; set; }
+
         public EKGOversigten(Logic logicref)
         {
             InitializeComponent();
@@ -40,6 +46,11 @@ namespace Projektet_GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Formatter = value => (50 * value + " ms");
+            Formatter1 = value => ("");
+            Formatter2 = value => (value + " mv");
+            Formatter3 = value => ("");
+
             PatientListe = logicref.getPatientListe();
             foreach (Patient item in PatientListe)
             {

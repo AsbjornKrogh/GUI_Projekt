@@ -220,6 +220,10 @@ namespace Data
             {
                IndleverPatient = new Patient(Convert.ToString(dataReader["CPR"]), Convert.ToString(dataReader["navn"]), Convert.ToString(dataReader["Efternavn"]), Convert.ToInt32(dataReader["EKGID"]));
             }
+                else
+                {
+                    IndleverPatient = null;
+                }
 
             dataReader.Close();
 

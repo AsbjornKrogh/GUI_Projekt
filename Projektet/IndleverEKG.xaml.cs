@@ -28,7 +28,7 @@ namespace Projektet
         private Patient indleverpatient;
         private Logic logicref;
 
-        
+
 
         public IndleverEKG(MainWindow main, Logic logicref)
         {
@@ -42,13 +42,15 @@ namespace Projektet
 
         private void HentinfoB_Click(object sender, RoutedEventArgs e)
         {
+            InfoTB.Clear();
+
             try
             {
                 indleverpatient = logicref.getPatientinfo(Convert.ToInt32(IDTB.Text));
 
                 InfoTB.Text = indleverpatient.EKGID + "              " + indleverpatient.Navn + " " + indleverpatient.Efternavn;
             }
-            catch 
+            catch
             {
 
                 MessageBox.Show("Det indtastede EKG-ID er ugyldigt");
@@ -58,7 +60,7 @@ namespace Projektet
 
         private void IndleverB_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra " + indleverpatient.Navn + " " + indleverpatient.Efternavn + " med tilhørende EKG ID: " + indleverpatient.EKGID + "?","Advarsel", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Er du sikker på du vil indlevere EKG-Måler fra " + indleverpatient.Navn + " " + indleverpatient.Efternavn + " med tilhørende EKG ID: " + indleverpatient.EKGID + "?", "Advarsel", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
@@ -83,6 +85,6 @@ namespace Projektet
 
     }
 
-        
+
 
 }
