@@ -68,34 +68,34 @@ namespace LogicLayer
          int Tæller = 1;
          int Antal = 0;
 
-         double threshold = 1.76;
+         double threshold = 1.75;
          bool belowThreshold = true;
 
          int[] RTList = new int[20];
-         int[] dif = new int[10];
-         List<int> diff = new List<int>(); 
-
-         EKGmaaling = DBDataAccess.LoadEKGMaaling(cpr, time);
-
-         int samplerate = EKGmaaling.Samplerate;
-         double Sygdomsdiff = (1 * samplerate) * 0.16;
-
-         foreach (double item in EKGmaaling.EKG_Data)
-         {
-            if (item > threshold && belowThreshold == true)
-            {
-               RTList[Antal] = Tæller;
-               Antal++;
-            }
-            if (item < threshold)
-               belowThreshold = true;
-            else
-               belowThreshold = false;
-            Tæller++;
-         }
+         List<int> diff = new List<int>();
 
          try
          {
+            EKGmaaling = DBDataAccess.LoadEKGMaaling(cpr, time);
+
+
+            int samplerate = EKGmaaling.Samplerate;
+            double Sygdomsdiff = (1 * samplerate) * 0.16;
+
+            for (int tæller = 0; tæller > EKGmaaling.EKG_DataArray.Length; tæller++)
+            {
+               if (EKGmaaling.EKG_DataArray[tæller] > threshold && belowThreshold == true)
+               {
+                  RTList[Antal] = Tæller;
+                  Antal++;
+               }
+               if (EKGmaaling.EKG_DataArray[tæller] < threshold)
+                  belowThreshold = true;
+               else
+                  belowThreshold = false;
+               Tæller++;
+            }
+
             for (int i = 0; i < RTList.Length; ++i)
             {
                if (RTList[1 + i] == 0)
@@ -104,14 +104,14 @@ namespace LogicLayer
                diff.Add(RTList[i + 1] - RTList[i]);
             }
             int MaxVal = diff.Max();
-            int MinVal = diff.Min(); 
+            int MinVal = diff.Min();
 
             if (Sygdomsdiff < MaxVal - MinVal)
-               EKGmaaling.Sygdom = true;   
+               EKGmaaling.Sygdom = true;
          }
          catch
          {
-           
+
          }
          return EKGmaaling;
       }

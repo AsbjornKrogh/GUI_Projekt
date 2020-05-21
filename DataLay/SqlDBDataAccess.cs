@@ -342,7 +342,9 @@ namespace Data
       }
 
       //Metoden som skal gennem det analyserede EKG i den offentlige database. 
-      public void gemIOffentligDataBase(DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr,EKG_Maaling maaling)
+      public void gemIOffentligDataBase(DateTime dato, int antalmaalinger, string sfp_ansvfornavn, 
+      string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, 
+      string borger_fornavn, string borger_efternavn, string borger_cprnr,EKG_Maaling maaling)
       {
 
          connectionOff.Open();
@@ -355,7 +357,7 @@ namespace Data
 
          using (SqlCommand cmdOff = new SqlCommand(insertStringParam, connectionOff))
          {
-            cmdOff.Parameters.AddWithValue("@dato", DateTime.Now.ToLocalTime());
+            cmdOff.Parameters.AddWithValue("@dato", dato);
             cmdOff.Parameters.AddWithValue("@antalmaalinger", antalmaalinger);
             cmdOff.Parameters.AddWithValue("@sfp_ansvfornavn", sfp_ansvfornavn);
             cmdOff.Parameters.AddWithValue("@sfp_ansvefternavn", sfp_ansvefternavn);
