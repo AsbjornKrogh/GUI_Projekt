@@ -11,105 +11,109 @@ using DTO;
 namespace LogicLayer
 {
 
-    public class Logic
-    {
-        SqlDBDataAccess DBDataAccess;
-        private Patient patient;
-        private EKG_Maaling EKGmaaling;
+   public class Logic
+   {
+      private SqlDBDataAccess DBDataAccess;
+      private EKG_Maaling EKGmaaling;
+      public string tekst;
 
-        public Logic()
-        {
-            DBDataAccess = new SqlDBDataAccess();
+      public Logic()
+      {
+         DBDataAccess = new SqlDBDataAccess();
+      }
 
-        }
-        public List<EKG> getEKGMålere()
-        {
-            return DBDataAccess.EKGMålere();
-        }
+      public List<EKG> getEKGMålere()
+      {
+         return DBDataAccess.EKGMålere();
+      }
 
-        public byte getudlånBesked(string cpr, string navn, string efternavn, int ekgid)
-        {
-            return DBDataAccess.UdlaanTilPatient(cpr, navn, efternavn, ekgid);
-        }
+      public byte getudlånBesked(string cpr, string navn, string efternavn, int ekgid)
+      {
+         return DBDataAccess.UdlaanTilPatient(cpr, navn, efternavn, ekgid);
+      }
 
-        public Patient getCPR(string cpr)
-        {
-            return DBDataAccess.LoadPatientCPR(cpr);
-        }
+      public Patient getCPR(string cpr)
+      {
+         return DBDataAccess.LoadPatientCPR(cpr);
+      }
 
-        public Patient getPatientinfo(int ekgid)
-        {
-            return DBDataAccess.LoadPatient(ekgid);
-        }
+      public Patient getPatientinfo(int ekgid)
+      {
+         return DBDataAccess.LoadPatient(ekgid);
+      }
 
-        public void indleverEkgMåler(string cpr, int ekgid)
-        {
-            DBDataAccess.IndleverEKG(cpr, ekgid);
-        }
+      public void indleverEkgMåler(string cpr, int ekgid)
+      {
+         DBDataAccess.IndleverEKG(cpr, ekgid);
+      }
 
-        public List<Patient> getPatientListe()
-        {
-            return DBDataAccess.LoadAllPatient();
-        }
+      public List<Patient> getPatientListe()
+      {
+         return DBDataAccess.LoadAllPatient();
+      }
 
-        public List<EKG_Maaling> getMaalingListe(string cpr)
-        {
-            return DBDataAccess.LoadAllMålinger(cpr);
-        }
+      public List<EKG_Maaling> getMaalingListe(string cpr)
+      {
+         return DBDataAccess.LoadAllMålinger(cpr);
+      }
 
-        public void gemIoffentligDatabase(DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr, EKG_Maaling maaling)
-        {
-            DBDataAccess.gemIOffentligDataBase(dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr, maaling);
-        }
+      public void gemIoffentligDatabase(DateTime dato, int antalmaalinger, string sfp_ansvfornavn, string sfp_ansvefternavn, int sfp_ansvmedarbjnr, string sfp_ans_org, string sfp_anskommentar, string borger_fornavn, string borger_efternavn, string borger_cprnr, EKG_Maaling maaling)
+      {
+         DBDataAccess.gemIOffentligDataBase(dato, antalmaalinger, sfp_ansvfornavn, sfp_ansvefternavn, sfp_ansvmedarbjnr, sfp_ans_org, sfp_anskommentar, borger_fornavn, borger_efternavn, borger_cprnr, maaling);
+      }
 
-        public EKG_Maaling sygdomsalgoritme_Måling(string cpr, DateTime time)
-        {
-            //Opjekter og atributter til udregnelse af sygdom. 
-            int Tæller = 1;
-            int Antal = 0;
+      public EKG_Maaling sygdomsalgoritme_Måling(string cpr, DateTime time)
+      {
+         //Opjekter og atributter til udregnelse af sygdom. 
+         int Tæller = 1;
+         int Antal = 0;
 
-            int diff;
-            double threshold = 1.7;
-            bool belowThreshold = true;
+         double threshold = 1.76;
+         bool belowThreshold = true;
 
-            int[] RTList = new int[200];
+         int[] RTList = new int[20];
+         int[] dif = new int[10];
+         List<int> diff = new List<int>(); 
 
-            EKGmaaling = DBDataAccess.LoadEKGMaaling(cpr, time);
+         EKGmaaling = DBDataAccess.LoadEKGMaaling(cpr, time);
 
-            foreach (double item in EKGmaaling.EKG_Data)
+         int samplerate = EKGmaaling.Samplerate;
+         double Sygdomsdiff = (1 * samplerate) * 0.16;
+
+         foreach (double item in EKGmaaling.EKG_Data)
+         {
+            if (item > threshold && belowThreshold == true)
             {
-                if (item > threshold && belowThreshold == true)
-                {
-                    RTList[Antal] = Tæller;
-                    Antal++;
-                }
-                if (item < threshold)
-                    belowThreshold = true;
-                else
-                    belowThreshold = false;
-
-                Tæller++;
+               RTList[Antal] = Tæller;
+               Antal++;
             }
-            try
+            if (item < threshold)
+               belowThreshold = true;
+            else
+               belowThreshold = false;
+            Tæller++;
+         }
+
+         try
+         {
+            for (int i = 0; i < RTList.Length; ++i)
             {
-                for (int i = 0; i < RTList.Length; i++)
-                {
-                    diff = RTList[i + 1] - RTList[i];
+               if (RTList[1 + i] == 0)
+                  break;
 
-                    if (diff > 30) //30 er udvalgt, da vi sampler med 
-                        EKGmaaling.Sygdom = true;
-                }
+               diff.Add(RTList[i + 1] - RTList[i]);
             }
-            catch
-            {
-                return EKGmaaling;
-            }
-            return EKGmaaling;
-        }
-    }
+            int MaxVal = diff.Max();
+            int MinVal = diff.Min(); 
 
-
-
-
-
+            if (Sygdomsdiff < MaxVal - MinVal)
+               EKGmaaling.Sygdom = true;   
+         }
+         catch
+         {
+           
+         }
+         return EKGmaaling;
+      }
+   }
 }

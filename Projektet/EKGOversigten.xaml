@@ -28,6 +28,8 @@
                     </lvc:Axis.Separator>
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
+            
+            
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis LabelFormatter="{Binding Formatter2}" >
                     <lvc:Axis.Separator>
