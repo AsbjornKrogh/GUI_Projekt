@@ -100,7 +100,7 @@ namespace Projektet_GUI
 
             foreach (EKG_Maaling item in MaalingListe)
             {
-                DatoLB.Items.Add(item.Starttid);
+            DatoLB.Items.Add(item.Starttid.ToString()) ;
             }
 
         }
@@ -112,29 +112,24 @@ namespace Projektet_GUI
 
             foreach (EKG_Maaling item in MaalingListe)
             {
-                if (item.Starttid == Convert.ToDateTime(DatoLB.SelectedItem))
-                    Maaling = logicref.sygdomsalgoritme_Måling(item.CPR, item.Starttid);
+            if (item.Starttid == Convert.ToDateTime(DatoLB.SelectedItem))
+            {
+               Maaling = logicref.sygdomsalgoritme_Måling(item.CPR, item.Starttid);
+               break; 
+            }
             }
 
-       
             foreach (double item in Maaling.EKG_Data)
-            {
                 Ekgvalues.Add(item);
-            }
 
             if (Maaling.Sygdom == true)
-            {
                 sygdomTB.Text = "Ja";
-            }
+        
             else
-            {
                 sygdomTB.Text = "Nej";
-            }
 
              DataContext = this;
              LabelsY = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" };
-
-
       }
 
    }
