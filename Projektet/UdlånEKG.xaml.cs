@@ -50,7 +50,7 @@ namespace Projektet
                     case MessageBoxResult.Yes:
                         besked = logicref.getudlånBesked(CPRTB.Text, NavnTB.Text, EfterNavnTB.Text, Convert.ToInt32(EKGmålerId.SelectedItem));
                         if (besked == 2)
-                            MessageBox.Show("Patienten er oprettet og EKG måler " + EKGmålerId.SelectedItem + " udlånt");
+                            MessageBox.Show("Patienten er oprettet og EKG måler " + EKGmålerId.SelectedItem + " er udlånt");
                         if (besked == 1)
                             MessageBox.Show("Patienten findes allerede i databasen og har fået EKG måler " + EKGmålerId.SelectedItem + " tildelt");
                         this.Close();
