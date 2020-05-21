@@ -46,7 +46,7 @@ namespace Projektet_GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Formatter = value => (50 * value + " ms");
+            Formatter = value => (5 * value + " ms");
             Formatter1 = value => ("");
             Formatter2 = value => (value + " mv");
             Formatter3 = value => ("");
