@@ -84,7 +84,7 @@ namespace LogicLayer
             int samplerate = EKGmaaling.Samplerate;
             double Sygdomsdiff = (1 * samplerate) * 0.16;
 
-            for (int tæller = 0; tæller > EKGmaaling.EKG_DataArray.Length; tæller++)
+            for (int tæller = 0; tæller < EKGmaaling.EKG_DataArray.Length; tæller++)
             {
                if (EKGmaaling.EKG_DataArray[tæller] > threshold && belowThreshold == true)
                {
