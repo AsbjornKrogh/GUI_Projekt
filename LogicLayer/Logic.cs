@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using Data;
@@ -12,7 +13,7 @@ namespace LogicLayer
 {
 
    public class Logic
-   {
+   {   
       private SqlDBDataAccess DBDataAccess;
       private EKG_Maaling EKGmaaling;
       public string tekst;
@@ -20,6 +21,7 @@ namespace LogicLayer
       public Logic()
       {
          DBDataAccess = new SqlDBDataAccess();
+     
       }
 
       public List<EKG> getEKGMålere()
