@@ -15,7 +15,9 @@ namespace Data
 
       //Atributter og objetkter 
       //Connectionsstrings til Lokal og Offentlig Database. 
+      //Lokal online database 
       private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      //Lokal offentilig databse
       private string connetionStringSToffentlig = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=ST2PRJ2OffEKGDatabase;Password=ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
       private string connetionStringLDB = @"Data Source=192.168.0.218\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
@@ -333,7 +335,7 @@ namespace Data
                   Maalepunkter.Add(BitConverter.ToDouble(bytesArray, i));
                   MalepunkterArray[j] = BitConverter.ToDouble(bytesArray, i);
                }
-               EKGMaaling = new EKG_Maaling(Convert.ToString(dataReader["CPR"]), Maalepunkter, MalepunkterArray, Convert.ToInt32(dataReader["samplerate_hz"]), Convert.ToInt32(dataReader["interval_sec"]), Convert.ToString(dataReader["data_format"]), Convert.ToString(dataReader["bin_eller_tekst"]), Convert.ToString(dataReader["maaleformat_type"]), Time, Convert.ToInt32(dataReader["maalenehed"]));
+               EKGMaaling = new EKG_Maaling(CPR, Maalepunkter, MalepunkterArray, Convert.ToInt32(dataReader["samplerate_hz"]), Convert.ToInt32(dataReader["interval_sec"]), Convert.ToString(dataReader["data_format"]), Convert.ToString(dataReader["bin_eller_tekst"]), Convert.ToString(dataReader["maaleformat_type"]), Time, Convert.ToInt32(dataReader["maalenehed"]));
             }
          }
          connection.Close();
